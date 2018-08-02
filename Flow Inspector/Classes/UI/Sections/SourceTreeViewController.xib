@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SourceTreeViewController" customModule="Flow_Inspector" customModuleProvider="target">
+            <connections>
+                <outlet property="binFileButton" destination="mZD-3y-PHa" id="pLz-qW-elL"/>
+                <outlet property="dSYMFileButton" destination="2Ff-JI-6mT" id="ApT-IO-2Rq"/>
+                <outlet property="sourceFileButton" destination="dBE-tI-7nN" id="w1F-mY-HzY"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="665" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dBE-tI-7nN">
+                    <rect key="frame" x="20" y="220" width="625" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="WjZ-57-a22"/>
+                    </constraints>
+                    <buttonCell key="cell" type="bevel" title="Attach source File" bezelStyle="rounded" image="swift-source_Icon" imagePosition="leading" alignment="left" imageScaling="proportionallyDown" inset="2" id="jF9-24-Now">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="selectSourceFile:" target="-2" id="eCH-mY-Jlq"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mZD-3y-PHa">
+                    <rect key="frame" x="20" y="180" width="625" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="4rL-ME-Ogd"/>
+                    </constraints>
+                    <buttonCell key="cell" type="bevel" title="Attach program" bezelStyle="rounded" image="processorusagepoint" imagePosition="leading" alignment="left" imageScaling="proportionallyDown" inset="2" id="91k-37-2VY">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="selectBinFile:" target="-2" id="0H2-Lw-3Fi"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Ff-JI-6mT">
+                    <rect key="frame" x="20" y="140" width="625" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="ZGo-Jh-vTv"/>
+                    </constraints>
+                    <buttonCell key="cell" type="bevel" title="Attach DSYM File" bezelStyle="rounded" image="dSYM_Icon" imagePosition="leading" alignment="left" imageScaling="proportionallyDown" inset="2" id="Ic8-T7-wYX">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="selectDSYMFile:" target="-2" id="IFJ-yR-qjd"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="dBE-tI-7nN" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="33w-VH-H0k"/>
+                <constraint firstAttribute="trailing" secondItem="dBE-tI-7nN" secondAttribute="trailing" constant="20" id="8sD-Q4-Por"/>
+                <constraint firstItem="2Ff-JI-6mT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="BvS-KT-oSz"/>
+                <constraint firstAttribute="trailing" secondItem="mZD-3y-PHa" secondAttribute="trailing" constant="20" id="IQF-Nw-cZM"/>
+                <constraint firstItem="2Ff-JI-6mT" firstAttribute="top" secondItem="mZD-3y-PHa" secondAttribute="bottom" constant="8" id="JLq-4M-ygS"/>
+                <constraint firstItem="mZD-3y-PHa" firstAttribute="top" secondItem="dBE-tI-7nN" secondAttribute="bottom" constant="8" id="T8i-0g-bgK"/>
+                <constraint firstItem="mZD-3y-PHa" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="U2f-h7-6f3"/>
+                <constraint firstAttribute="trailing" secondItem="2Ff-JI-6mT" secondAttribute="trailing" constant="20" id="WWB-p3-VAo"/>
+                <constraint firstItem="dBE-tI-7nN" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="m5g-GM-f1R"/>
+            </constraints>
+            <point key="canvasLocation" x="-1.5" y="168"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="dSYM_Icon" width="128" height="128"/>
+        <image name="processorusagepoint" width="128" height="128"/>
+        <image name="swift-source_Icon" width="16" height="16"/>
+    </resources>
+</document>

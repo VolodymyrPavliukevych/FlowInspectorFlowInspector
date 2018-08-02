@@ -1,0 +1,11 @@
+framework module LLDBKit {
+  umbrella header "LLDBKit.h"
+
+  export *
+  module * { export * }
+}
+
+module LLDBKit.Swift {
+    header "LLDBKit-Swift.h"
+    requires objc
+}

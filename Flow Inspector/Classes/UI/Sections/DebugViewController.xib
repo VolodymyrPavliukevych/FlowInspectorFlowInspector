@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DebugViewController" customModule="Flow_Inspector" customModuleProvider="target">
+            <connections>
+                <outlet property="debugTextView" destination="Z7F-id-oQr" id="ipq-jb-QZa"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="0yG-0T-nhy">
+                    <rect key="frame" x="0.0" y="240" width="480" height="30"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yUF-rZ-BIe">
+                            <rect key="frame" x="18" y="8" width="104" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="Sfp-xl-bUx"/>
+                            </constraints>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Program output:" id="Cyt-GW-Bdb">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bvK-e6-eYb">
+                            <rect key="frame" x="430" y="0.0" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="0An-mh-ACX"/>
+                                <constraint firstAttribute="width" constant="30" id="toU-ln-kdR"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" bezelStyle="circular" image="trashbin-icon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="HLk-ni-MuF">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="clearWithSender:" target="-2" id="fkA-eM-4fk"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="bvK-e6-eYb" secondAttribute="trailing" constant="20" id="7sM-H8-403"/>
+                        <constraint firstItem="yUF-rZ-BIe" firstAttribute="leading" secondItem="0yG-0T-nhy" secondAttribute="leading" constant="20" id="9Ri-St-79n"/>
+                        <constraint firstAttribute="height" constant="30" id="Nod-Ab-i9U"/>
+                        <constraint firstItem="bvK-e6-eYb" firstAttribute="top" secondItem="0yG-0T-nhy" secondAttribute="top" id="XWP-Pe-vEe"/>
+                        <constraint firstItem="yUF-rZ-BIe" firstAttribute="top" secondItem="0yG-0T-nhy" secondAttribute="top" constant="8" id="iQ7-Rs-bzQ"/>
+                    </constraints>
+                </customView>
+                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6r1-aT-Bb0" userLabel="BorderedScrollViewTextView">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="240"/>
+                    <clipView key="contentView" drawsBackground="NO" id="MfY-mh-PHa">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="240"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Z7F-id-oQr">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="240"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <size key="minSize" width="480" height="240"/>
+                                <size key="maxSize" width="480" height="10000000"/>
+                                <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            </textView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="dht-Ls-FCw">
+                        <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="PJE-al-os8">
+                        <rect key="frame" x="464" y="0.0" width="16" height="240"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="6r1-aT-Bb0" firstAttribute="top" secondItem="0yG-0T-nhy" secondAttribute="bottom" id="0bF-Gg-ga7"/>
+                <constraint firstAttribute="trailing" secondItem="6r1-aT-Bb0" secondAttribute="trailing" id="5od-Cb-VNb"/>
+                <constraint firstItem="6r1-aT-Bb0" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="9Ng-9Z-7Pl"/>
+                <constraint firstItem="0yG-0T-nhy" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="PFA-Jz-GFh"/>
+                <constraint firstItem="0yG-0T-nhy" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="SDi-fx-0v5"/>
+                <constraint firstAttribute="bottom" secondItem="6r1-aT-Bb0" secondAttribute="bottom" id="ocF-x7-8O9"/>
+                <constraint firstAttribute="trailing" secondItem="0yG-0T-nhy" secondAttribute="trailing" id="tpU-oU-Sl9"/>
+            </constraints>
+        </customView>
+    </objects>
+    <resources>
+        <image name="trashbin-icon" width="16" height="16"/>
+    </resources>
+</document>

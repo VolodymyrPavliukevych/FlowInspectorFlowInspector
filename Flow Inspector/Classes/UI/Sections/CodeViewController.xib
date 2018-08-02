@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="CodeViewController" customModule="Flow_Inspector" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="c22-O7-iKe" id="6et-6N-0X1"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="700" height="370"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <visualEffectView blendingMode="behindWindow" material="light" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="iKI-ja-OM1">
+                    <rect key="frame" x="0.0" y="0.0" width="700" height="370"/>
+                    <subviews>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="gRV-mP-pUC">
+                            <rect key="frame" x="222" y="57" width="256" height="256"/>
+                            <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iP1-8u-rJ8">
+                                    <rect key="frame" x="28" y="56" width="200" height="200"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="200" id="YXU-ya-Wm0"/>
+                                    </constraints>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="swift-logo" id="lBz-4T-IwO"/>
+                                </imageView>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y08-sm-fQB">
+                                    <rect key="frame" x="-2" y="0.0" width="260" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Please, select source file" id="Cdi-lr-tyR">
+                                        <font key="font" size="18" name="HelveticaNeue-Thin"/>
+                                        <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="256" id="AAK-gg-8OS"/>
+                                <constraint firstItem="iP1-8u-rJ8" firstAttribute="leading" secondItem="gRV-mP-pUC" secondAttribute="leading" constant="28" id="MNS-NE-iWo"/>
+                                <constraint firstAttribute="trailing" secondItem="iP1-8u-rJ8" secondAttribute="trailing" constant="28" id="Z30-7V-UJ0"/>
+                                <constraint firstAttribute="width" constant="256" id="ZXh-0Y-276"/>
+                                <constraint firstItem="iP1-8u-rJ8" firstAttribute="top" secondItem="gRV-mP-pUC" secondAttribute="top" id="sZ1-C0-pdi"/>
+                            </constraints>
+                        </customView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="gRV-mP-pUC" firstAttribute="centerX" secondItem="iKI-ja-OM1" secondAttribute="centerX" id="LvS-yf-mpa"/>
+                        <constraint firstItem="gRV-mP-pUC" firstAttribute="centerY" secondItem="iKI-ja-OM1" secondAttribute="centerY" id="Zxu-sJ-u9N"/>
+                    </constraints>
+                </visualEffectView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="iKI-ja-OM1" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="7JD-wc-fCG"/>
+                <constraint firstAttribute="trailing" secondItem="iKI-ja-OM1" secondAttribute="trailing" id="GVY-ca-Gh4"/>
+                <constraint firstAttribute="bottom" secondItem="iKI-ja-OM1" secondAttribute="bottom" id="Pty-Vx-8i6"/>
+                <constraint firstItem="iKI-ja-OM1" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="dLR-Pm-a4g"/>
+            </constraints>
+            <point key="canvasLocation" x="249" y="217"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="swift-logo" width="256" height="256"/>
+    </resources>
+</document>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="GraphViewController" customModule="Flow_Inspector" customModuleProvider="target">
+            <connections>
+                <outlet property="exportButton" destination="0iA-tK-fwp" id="Y0Z-hd-uH5"/>
+                <outlet property="graphContainerView" destination="9Ea-xb-Fsu" id="wHE-kP-anU"/>
+                <outlet property="launchButton" destination="dtH-6o-UT4" id="BSW-AA-yl8"/>
+                <outlet property="saveAsEventButton" destination="UBv-jg-XHx" id="bcF-yX-djd"/>
+                <outlet property="toolBarView" destination="ChG-mg-0Vr" id="OQt-Rl-9vQ"/>
+                <outlet property="view" destination="g4P-vJ-6dw" id="F3y-95-Peh"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="g4P-vJ-6dw" userLabel="View">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <visualEffectView blendingMode="behindWindow" material="light" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="i6c-UK-o7T">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+                    <subviews>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="bw9-Dw-uLZ">
+                            <rect key="frame" x="112" y="8" width="256" height="256"/>
+                            <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ibM-1d-AGE">
+                                    <rect key="frame" x="28" y="56" width="200" height="200"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="200" id="mEO-VY-yI5"/>
+                                    </constraints>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="graph_empty" id="cJo-V3-d9m"/>
+                                </imageView>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2k-6G-dm0">
+                                    <rect key="frame" x="-2" y="0.0" width="260" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Please, select function" id="yty-oQ-wpU">
+                                        <font key="font" size="18" name="HelveticaNeue-Thin"/>
+                                        <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="ibM-1d-AGE" firstAttribute="leading" secondItem="bw9-Dw-uLZ" secondAttribute="leading" constant="28" id="2Oz-99-QgI"/>
+                                <constraint firstAttribute="trailing" secondItem="ibM-1d-AGE" secondAttribute="trailing" constant="28" id="Ddf-eQ-cl1"/>
+                                <constraint firstItem="ibM-1d-AGE" firstAttribute="top" secondItem="bw9-Dw-uLZ" secondAttribute="top" id="SfO-Ym-7od"/>
+                                <constraint firstAttribute="height" constant="256" id="T2G-oL-pGa"/>
+                                <constraint firstAttribute="width" constant="256" id="jta-He-t2y"/>
+                            </constraints>
+                        </customView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="bw9-Dw-uLZ" firstAttribute="centerX" secondItem="i6c-UK-o7T" secondAttribute="centerX" id="CxW-8V-qQ0"/>
+                        <constraint firstItem="bw9-Dw-uLZ" firstAttribute="centerY" secondItem="i6c-UK-o7T" secondAttribute="centerY" id="iqh-Lm-ewd"/>
+                    </constraints>
+                </visualEffectView>
+                <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ChG-mg-0Vr" userLabel="ToolBarView">
+                    <rect key="frame" x="0.0" y="242" width="480" height="30"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0iA-tK-fwp" userLabel="ExportButton">
+                            <rect key="frame" x="58" y="0.0" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="export-icon" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="yBf-Dw-Pf5">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="exportAsEvent:" target="-2" id="62p-bv-W1q"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtH-6o-UT4">
+                            <rect key="frame" x="20" y="0.0" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="launch" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="rVV-YB-wmh">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="launch:" target="-2" id="wha-ZP-aAa"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UBv-jg-XHx">
+                            <rect key="frame" x="96" y="0.0" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="save-icon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="DEP-DC-mdp">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="save:" target="-2" id="qZm-oI-LkN"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="FR6-lt-HJO"/>
+                    </constraints>
+                </customView>
+                <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Ea-xb-Fsu">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="242"/>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="9Ea-xb-Fsu" secondAttribute="bottom" id="47i-yn-jsd"/>
+                <constraint firstItem="ChG-mg-0Vr" firstAttribute="top" secondItem="g4P-vJ-6dw" secondAttribute="top" id="7K6-2k-I1r"/>
+                <constraint firstItem="i6c-UK-o7T" firstAttribute="top" secondItem="g4P-vJ-6dw" secondAttribute="top" id="8Sz-s8-Dus"/>
+                <constraint firstItem="9Ea-xb-Fsu" firstAttribute="leading" secondItem="g4P-vJ-6dw" secondAttribute="leading" id="A0e-2N-kUI"/>
+                <constraint firstAttribute="bottom" secondItem="i6c-UK-o7T" secondAttribute="bottom" id="B3u-vc-kgT"/>
+                <constraint firstAttribute="trailing" secondItem="ChG-mg-0Vr" secondAttribute="trailing" id="MTm-o8-Yfq"/>
+                <constraint firstAttribute="trailing" secondItem="9Ea-xb-Fsu" secondAttribute="trailing" id="Q92-AF-mRR"/>
+                <constraint firstItem="i6c-UK-o7T" firstAttribute="leading" secondItem="g4P-vJ-6dw" secondAttribute="leading" id="V8n-AW-C4i"/>
+                <constraint firstItem="9Ea-xb-Fsu" firstAttribute="top" secondItem="ChG-mg-0Vr" secondAttribute="bottom" id="e2t-ea-vlu"/>
+                <constraint firstAttribute="trailing" secondItem="i6c-UK-o7T" secondAttribute="trailing" id="mFo-Au-lYS"/>
+                <constraint firstItem="ChG-mg-0Vr" firstAttribute="leading" secondItem="g4P-vJ-6dw" secondAttribute="leading" id="po3-Tg-RMg"/>
+            </constraints>
+        </customView>
+    </objects>
+    <resources>
+        <image name="export-icon" width="16" height="16"/>
+        <image name="graph_empty" width="175" height="175"/>
+        <image name="launch" width="16" height="16"/>
+        <image name="save-icon" width="16" height="16"/>
+    </resources>
+</document>

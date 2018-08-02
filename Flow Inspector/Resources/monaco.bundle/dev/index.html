@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <title>TensorFlow Swift Debuger</title>
+    <style>
+        html, body { height: 100%; margin: 0; overflow: hidden;}
+        .box { display: flex; flex-flow: column; height: 100%; }
+        .box .row { flex: 0 1 auto; }
+        .box .row.content { flex: 1 1 auto; }
+		.breakpointLine { background: #e6f7ff; }
+		.breakpointMarkerLavender { background: #E6E6FA; }
+		.breakpointMarkerLightSlateGray { background: #778899; }
+		.breakpointMarkerSteelBlue { background: #4682B4; }
+		.breakpointMarker {
+		  border-radius: 50%;
+		  width: 15px;
+		  height: 15px;
+		  padding: 0px;
+		  background: #FFFFFF;
+		  border: 1px solid #005580;
+		  color: #666666;
+		  text-align: center;
+		  font: 8px Arial, sans-serif;
+		}
+		.arrow-right {
+		  width: 20px; 
+		  height: 20px; 
+		  border-top: 10px solid transparent;
+		  border-bottom: 10px solid transparent;
+		  border-left: 10px solid blue;
+		}
+		.myContentClass { background: lightblue; }
+    </style>
+</head>
+<body>
+
+<div id="container" style="width:100%;height:100%;"></div>
+
+<!-- OR ANY OTHER AMD LOADER HERE INSTEAD OF loader.js -->
+<script src="vs/loader.js"></script>
+<script>
+	require.config({ paths: { 'vs': 'vs' }});
+	require(['vs/editor/editor.main'], function() {
+		var editor = monaco.editor.create(document.getElementById('container'), {
+            value: getCode(),
+            language: 'swift',
+            minimap: { enabled: false },
+			glyphMargin: true
+			
+		});
+		
+		var decorations = editor.deltaDecorations([], [{
+				range: new monaco.Range(3,1,3,1),
+				options: {
+					isWholeLine: true,
+                    className: 'breakpointLine',
+                    glyphMarginClassName: 'breakpointMarkerLightSlateGray',
+                    linesDecorationsClassName: 'breakpointMarkerSteelBlue'
+                }
+			}
+		]);
+        editor.onMouseDown(function (event) {
+
+            //alert(event.target.toString());
+<!--    GUTTER_GLYPH_MARGIN: (3,1) - [3,1 -> 3,13] - [object Object]-->
+<!--    GUTTER_LINE_NUMBERS: (3,1) - [3,1 -> 3,13] - [object Object]-->
+<!--    GUTTER_LINE_DECORATIONS: (3,1) - [3,1 -> 3,13] - [object Object]-->
+<!--    CONTENT_EMPTY: (3,13) - [3,13 -> 3,13] - [object Object]-->
+<!--    CONTENT_TEXT: (3,8) - [3,8 -> 3,9] - null-->
+        });
+        
+	});
+    
+    function getCode() {
+        return ["#import Cocoa\n\nfunc main(){\n\n\n}\n"].join('\n');;
+    }
+</script>
+</body>
+</html>
