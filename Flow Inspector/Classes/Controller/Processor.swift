@@ -32,7 +32,6 @@ enum ProcessorError: Error {
 protocol ProcessorInput {
     func extractGraph(at functionName: String, preferences: Preferences, callback: @escaping ResultCompletion<Data>)
     func extractMainGraph(preferences: Preferences, callback: @escaping ResultCompletion<MetaGraph>)
-    func launchMainGraphExecution()
 }
 
 protocol ProcessorOutput {
@@ -98,7 +97,7 @@ class Processor {
  ) -> _TensorComputation { */
 
 extension Processor: ProcessorInput {
-    
+    //MARK: Helpers
     func lookingForStartAddress(at target: LLDBTarget, program name: String) -> UInt64 {
         let filteredModules = target.modules.filter { $0.fileSpec()?.filename == name }
         for module in filteredModules {
@@ -132,52 +131,6 @@ extension Processor: ProcessorInput {
         return 0
     }
     
-    func readArgValue<T: Any>(by address: UInt64, size: Int, in process: LLDBProcess) throws -> T {
-        let result = process.readMemory(address..<address + UInt64(size))
-        if let error = result.error, error.code != 0 {
-            throw error
-        }
-        
-        switch T.self {
-        case is String.Type:
-            
-            let string = result.data.withUnsafeBytes { (pointer: UnsafePointer<UInt8>) -> String in
-                return String(cString: pointer)
-            }
-            if let string = string as? T {
-                return string
-            }
-            break
-            
-        case is Data.Type:
-            if let data = result.data as? T {
-                return data
-            }
-            break
-            
-        default:
-            break
-
-        }
-        throw ProcessorError.canNotReadArgument
-    }
-    
-    func readArgumentPointerValue(in value: LLDBValue) throws -> UInt64 {
-        let data = try value.data.readRawData()
-        let argValue = data.withUnsafeBytes { (pointer: UnsafePointer<UInt64>) -> UInt64 in
-            return UInt64(littleEndian: pointer.pointee)
-        }
-        return argValue
-    }
-    
-    func lookingFor(_ name: String, at registers: [LLDBValue]) throws -> UInt64 {
-        let filtered = registers.filter { (value) -> Bool in
-            return value.name == name
-        }
-        guard let value = filtered.first else { throw ProcessorError.argumentNotFound }
-        return try readArgumentPointerValue(in: value)
-    }
-    
     func extractTensors(tensorArgumentAddress: UInt64, tensorArgumentCount: UInt64, at process: LLDBProcess) {
         guard tensorArgumentCount > 0 else { return }
         guard let thread = process.threads.first else  { return }
@@ -195,7 +148,7 @@ extension Processor: ProcessorInput {
         guard let tensorPointer = frame.evaluateExpression("((long *) \(pointers.name!))[0]", on: .objC) else { fatalError() }
         print(tensorPointer.error)
         print(tensorPointer.description())
-        let pointerAddress = try! readArgumentPointerValue(in: tensorPointer)
+        let pointerAddress = try! readPointerValue(in: tensorPointer)
         print("address: \(pointerAddress)")
         
         //TF_Dim
@@ -215,14 +168,14 @@ extension Processor: ProcessorInput {
         print(tensorByteSize.error)
         print(tensorByteSize.description())
         //Reading data
-        let byteSize = try! readArgumentPointerValue(in: tensorByteSize)
+        let byteSize = try! readPointerValue(in: tensorByteSize)
         
         guard let tensorData = frame.evaluateExpression("(id)TF_TensorData((id)\(resolve.name!))",
             on: .objC) else { fatalError() }
         print(tensorData.error)
         print(tensorData.description())
         
-        let dataAddress = try! readArgumentPointerValue(in: tensorData)
+        let dataAddress = try! readPointerValue(in: tensorData)
         
         let data = process.readMemory(dataAddress..<dataAddress+byteSize)
         if let error = data.error, error.code != 0 {
@@ -248,18 +201,19 @@ extension Processor: ProcessorInput {
     
     func readArguments(_ registers: [LLDBValue], process: LLDBProcess) throws -> MetaGraph {
         
-        let rdiPointerValue = try lookingFor("rdi", at: registers)
-        let rsiPointerValue = try lookingFor("rsi", at: registers)
-        let rdxPointerValue = try lookingFor("rdx", at: registers)
-        let rcxPointerValue = try lookingFor("rcx", at: registers) //tensorArgumentAddress
-        let r8PointerValue = try lookingFor("r8", at: registers) //tensorArgumentCount
+        let rdiPointerValue = try lookingForFirstPointerValue("rdi", at: registers)
+        let rsiPointerValue = try lookingForFirstPointerValue("rsi", at: registers)
+        let rdxPointerValue = try lookingForFirstPointerValue("rdx", at: registers)
+        let rcxPointerValue = try lookingForFirstPointerValue("rcx", at: registers) //tensorArgumentAddress
+        let r8PointerValue = try lookingForFirstPointerValue("r8", at: registers) //tensorArgumentCount
 
         extractTensors(tensorArgumentAddress: rcxPointerValue,
                        tensorArgumentCount: r8PointerValue,
                        at: process)
 
-        let graphData: Data = try readArgValue(by: rdiPointerValue, size: Int(rsiPointerValue), in: process)
-        let entryFunctionBaseName: String = try readArgValue(by: rdxPointerValue, size: 128, in: process)
+        let graphData: Data = try readValue(by: rdiPointerValue, size: Int(rsiPointerValue), in: process)
+        // Read first 128 byte, C string has terminator \0 so it will find finish.
+        let entryFunctionBaseName: String = try readValue(by: rdxPointerValue, size: 128, in: process)
 
         return MetaGraph(program: graphData, entryFunctionBaseName: entryFunctionBaseName, tensorArgument: [])
     }
@@ -337,10 +291,6 @@ extension Processor: ProcessorInput {
         }
         
         launchDebug(preferences: preferences, createBreakpoint: createBreakpoint, discoverCallback: discoverCallback, finish: finishCallback)
-    }
-    
-    func launchMainGraphExecution() {
-        
     }
     
     func extractGraph(at functionName: String, preferences: Preferences, callback: @escaping ResultCompletion<Data>) {
@@ -541,3 +491,50 @@ extension Processor: ProcessorInput {
     }
 }
 
+
+//MARK: - Helper
+extension Processor {
+    func readValue<T: Any>(by address: UInt64, size: Int, in process: LLDBProcess) throws -> T {
+        let result = process.readMemory(address..<address + UInt64(size))
+        if let error = result.error, error.code != 0 {
+            throw error
+        }
+        
+        switch T.self {
+        case is String.Type:
+            
+            let string = result.data.withUnsafeBytes { (pointer: UnsafePointer<UInt8>) -> String in
+                return String(cString: pointer)
+            }
+            if let string = string as? T {
+                return string
+            }
+            break
+            
+        case is Data.Type:
+            if let data = result.data as? T {
+                return data
+            }
+            break
+        default:
+            break
+        }
+        throw ProcessorError.canNotReadArgument
+    }
+    
+    func readPointerValue(in value: LLDBValue) throws -> UInt64 {
+        let data = try value.data.readRawData()
+        let argValue = data.withUnsafeBytes { (pointer: UnsafePointer<UInt64>) -> UInt64 in
+            return UInt64(littleEndian: pointer.pointee)
+        }
+        return argValue
+    }
+    
+    func lookingForFirstPointerValue(_ name: String, at registers: [LLDBValue]) throws -> UInt64 {
+        let filtered = registers.filter { (value) -> Bool in
+            return value.name == name
+        }
+        guard let value = filtered.first else { throw ProcessorError.argumentNotFound }
+        return try readPointerValue(in: value)
+    }
+}

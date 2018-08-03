@@ -335,7 +335,7 @@ extension FIDocument: GraphViewOutput {
                 return
             }
             Swift.print(mainGraph)
-            processorInput.launchMainGraphExecution()
+            /*processorInput.launchMainGraphExecution()*/
         }
     }
     

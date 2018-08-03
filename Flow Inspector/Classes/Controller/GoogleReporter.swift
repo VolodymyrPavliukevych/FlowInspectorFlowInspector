@@ -69,6 +69,10 @@ public class GoogleReporter {
         self.trackerId = trackerId
     }
     
+    public var isReady: Bool {
+        return self.trackerId != nil
+    }
+    
     /// Tracks a screen view event to Google Analytics by setting the `cd`
     /// parameter of the request.
     ///
