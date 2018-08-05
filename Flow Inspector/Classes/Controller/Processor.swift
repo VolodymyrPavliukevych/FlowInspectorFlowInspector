@@ -147,26 +147,27 @@ extension Processor: ProcessorInput {
         let pointers = try evaluateObjCExpression("(const void *)\(tensorArgumentAddress)]", at: frame)
         let tensorPointer = try evaluateObjCExpression("((long *) \(pointers.name!))[0]", at: frame)
         let pointerAddress = try readPointerValue(in: tensorPointer)
-
         
-        //TF_Dim
-        //TF_NumDims
+        let tensorAddressValue = try evaluateObjCExpression("(id)TFE_TensorHandleResolve((id)\(pointerAddress),\(status.name!))", at: frame)
+        let tensorByteSize = try evaluateObjCExpression("(int)TF_TensorByteSize((id)\(tensorAddressValue.name!), \(status.name!))", at: frame)
         
-        let resolve = try evaluateObjCExpression("(id)TFE_TensorHandleResolve((id)\(pointerAddress),\(status.name!))", at: frame)
-        let tensorByteSize = try evaluateObjCExpression("(int)TF_TensorByteSize((id)\(resolve.name!), \(status.name!))", at: frame)
-        
+        let typeValue = try evaluateObjCExpression("(id)TF_TensorType((id)\(tensorAddressValue.name!))", at: frame)
+        let rawType: Int = try typeValue.data.readRawData().asValue()
+        guard let type = Tensorflow_DataType(rawValue: rawType) else { throw ProcessorError.canNotReadArgument }
 
         //Reading data
         let byteSize = try readPointerValue(in: tensorByteSize)
-        let tensorData = try evaluateObjCExpression("(id)TF_TensorData((id)\(resolve.name!))", at: frame)
+        let tensorData = try evaluateObjCExpression("(id)TF_TensorData((id)\(tensorAddressValue.name!))", at: frame)
         
         var shape = [Int64]()
-        let numDims = try evaluateObjCExpression("(int)TF_NumDims((id)\(resolve.name!))", at: frame)
-        
-//        for dimIndex in 0..< {
-//            let
-//        }
-        
+        let numDims = try evaluateObjCExpression("(int)TF_NumDims((id)\(tensorAddressValue.name!))", at: frame)
+        let dimCount: Int32 = try numDims.data.readRawData().asValue()
+        for dimIndex in 0..<dimCount {
+            let dim = try evaluateObjCExpression("(int)TF_Dim((id)\(tensorAddressValue.name!), \(dimIndex))", at: frame)
+            let dimention: Int32 = try dim.data.readRawData().asValue()
+            shape.append(Int64(dimention))
+        }
+
         let dataAddress = try readPointerValue(in: tensorData)
         
         let data = try process.readMemory(dataAddress..<dataAddress+byteSize)
@@ -177,13 +178,17 @@ extension Processor: ProcessorInput {
         
         self.output.outputStreamReceived("Input tensor[0] value: \(collection)\n\n")
         
-//        var tensor = Tensorflow_TensorProto()
-//        var tensorShape = Tensorflow_TensorShapeProto()
-//        var dim = Tensorflow_TensorShapeProto.Dim()
-//        dim.size = 0
-//        tensorShape.dim = [dim]
-//
-//        tensor.dtype = Tensorflow_DataType.dtFloat
+        var tensor = Tensorflow_TensorProto()
+        tensor.dtype = type
+        var tensorShape = Tensorflow_TensorShapeProto()
+        tensorShape.dim = shape.map({ (value) -> Tensorflow_TensorShapeProto.Dim in
+            var dim = Tensorflow_TensorShapeProto.Dim()
+            dim.size = value
+            return dim
+        })
+        tensor.tensorShape = tensorShape
+        
+        
         
     }
     
