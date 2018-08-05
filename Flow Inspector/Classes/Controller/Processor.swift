@@ -27,6 +27,7 @@ enum ProcessorError: Error {
     case argumentNotFound
     case canNotComputRegisterValue
     case isInProgress
+    case canNotReadInputTensor
     
 }
 protocol ProcessorInput {
@@ -112,7 +113,6 @@ extension Processor: ProcessorInput {
             symbols = module.symbols.filter { $0.name == Processor.mainFunctionName }
             for symbol in symbols {
                 let fileAddress = symbol.startAddress.fileAddress
-                /*let offsetAddress = symbol.startAddress.offset*/
                 guard let instructions = symbol.instructions(for: target) else { continue }
                 
                 for instruction in instructions.allInstructions {
@@ -131,25 +131,28 @@ extension Processor: ProcessorInput {
         return 0
     }
     
-    func extractTensors(tensorArgumentAddress: UInt64, tensorArgumentCount: UInt64, at process: LLDBProcess) {
+    func evaluateObjCExpression(_ expression: String, at frame: LLDBFrame) throws -> LLDBValue {
+        guard let resolve = frame.evaluateExpression(expression, on: .objC) else { throw ProcessorError.canNotReadInputTensor }
+        guard resolve.error.code == 0 else { throw ProcessorError.canNotReadInputTensor }
+        return resolve
+    }
+    
+    func extractTensors(tensorArgumentAddress: UInt64, tensorArgumentCount: UInt64, at process: LLDBProcess) throws {
         guard tensorArgumentCount > 0 else { return }
         guard let thread = process.threads.first else  { return }
         guard let frame = thread.frames.first else  { return }
 
-        guard let status = frame.evaluateExpression("(id)TF_NewStatus()", on: .objC) else { fatalError() }
-        guard status.error.code == 0 else { return }
-        print(status.description())
-        
-        guard let pointers = frame.evaluateExpression("(const void *)\(tensorArgumentAddress)]", on: .objC) else { fatalError() }
-        guard pointers.error.code == 0 else { return }
-        print(pointers.description())
+        let status = try evaluateObjCExpression("(id)TF_NewStatus()", at: frame)
         
         
-        guard let tensorPointer = frame.evaluateExpression("((long *) \(pointers.name!))[0]", on: .objC) else { fatalError() }
-        print(tensorPointer.error)
-        print(tensorPointer.description())
-        let pointerAddress = try! readPointerValue(in: tensorPointer)
-        print("address: \(pointerAddress)")
+        
+        
+        
+        
+        let pointers = try evaluateObjCExpression("(const void *)\(tensorArgumentAddress)]", at: frame)
+        let tensorPointer = try evaluateObjCExpression("((long *) \(pointers.name!))[0]", at: frame)
+        let pointerAddress = try readPointerValue(in: tensorPointer)
+
         
         //TF_Dim
         //TF_NumDims
@@ -158,30 +161,19 @@ extension Processor: ProcessorInput {
          print(dataType.error)
          print(dataType.description())
          */
-        guard let resolve = frame.evaluateExpression("(id)TFE_TensorHandleResolve((id)\(pointerAddress),\(status.name!))",
-            on: .objC) else { fatalError() }
-        print(resolve.error)
-        print(resolve.description())
         
-        guard let tensorByteSize = frame.evaluateExpression("(int)TF_TensorByteSize((id)\(resolve.name!), \(status.name!))",
-            on: .objC) else { fatalError() }
-        print(tensorByteSize.error)
-        print(tensorByteSize.description())
+        let resolve = try evaluateObjCExpression("(id)TFE_TensorHandleResolve((id)\(pointerAddress),\(status.name!))", at: frame)
+        let tensorByteSize = try evaluateObjCExpression("(int)TF_TensorByteSize((id)\(resolve.name!), \(status.name!))", at: frame)
+        
+
         //Reading data
-        let byteSize = try! readPointerValue(in: tensorByteSize)
+        let byteSize = try readPointerValue(in: tensorByteSize)
+        let tensorData = try evaluateObjCExpression("(id)TF_TensorData((id)\(resolve.name!))", at: frame)
         
-        guard let tensorData = frame.evaluateExpression("(id)TF_TensorData((id)\(resolve.name!))",
-            on: .objC) else { fatalError() }
-        print(tensorData.error)
-        print(tensorData.description())
-        
-        let dataAddress = try! readPointerValue(in: tensorData)
+        let dataAddress = try readPointerValue(in: tensorData)
         
         let data = process.readMemory(dataAddress..<dataAddress+byteSize)
-        if let error = data.error, error.code != 0 {
-            print(error)
-            return
-        }
+        if let error = data.error, error.code != 0 { throw ProcessorError.canNotReadInputTensor }
         
         let collection = data.data.withUnsafeBytes { (pointer: UnsafePointer<Float>) -> [Float] in
             return Array(UnsafeBufferPointer<Float>(start: pointer, count: data.data.count / MemoryLayout<Float>.size))
@@ -207,9 +199,9 @@ extension Processor: ProcessorInput {
         let rcxPointerValue = try lookingForFirstPointerValue("rcx", at: registers) //tensorArgumentAddress
         let r8PointerValue = try lookingForFirstPointerValue("r8", at: registers) //tensorArgumentCount
 
-        extractTensors(tensorArgumentAddress: rcxPointerValue,
-                       tensorArgumentCount: r8PointerValue,
-                       at: process)
+        try extractTensors(tensorArgumentAddress: rcxPointerValue,
+                           tensorArgumentCount: r8PointerValue,
+                           at: process)
 
         let graphData: Data = try readValue(by: rdiPointerValue, size: Int(rsiPointerValue), in: process)
         // Read first 128 byte, C string has terminator \0 so it will find finish.
