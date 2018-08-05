@@ -102,7 +102,8 @@
 
 - (size_t)readMemory:(LLDBAddressType)address buffer:(void*)buffer size:(size_t)size error:(LLDBError**)error;
 - (size_t)writeMemory:(LLDBAddressType)address buffer:(const void*)buffer size:(size_t)size error:(LLDBError**)error;
-
+- (size_t)readCString:(LLDBAddressType)address buffer:(void *)buffer size:(size_t)size error:(LLDBError *__autoreleasing *)error;
+    
 + (LLDBStateType)stateFromEvent:(LLDBEvent*)event;
 + (BOOL)restartedFromEvent:(LLDBEvent*)event;
 + (size_t)numberOfRestartedReasonsFromEvent:(LLDBEvent*)event;

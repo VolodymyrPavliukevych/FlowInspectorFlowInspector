@@ -144,11 +144,6 @@ extension Processor: ProcessorInput {
 
         let status = try evaluateObjCExpression("(id)TF_NewStatus()", at: frame)
         
-        
-        
-        
-        
-        
         let pointers = try evaluateObjCExpression("(const void *)\(tensorArgumentAddress)]", at: frame)
         let tensorPointer = try evaluateObjCExpression("((long *) \(pointers.name!))[0]", at: frame)
         let pointerAddress = try readPointerValue(in: tensorPointer)
@@ -156,11 +151,6 @@ extension Processor: ProcessorInput {
         
         //TF_Dim
         //TF_NumDims
-        /*
-         guard let dataType = frame.evaluateObjCExpression("(int)TF_NumDims((id)\(pointerAddress))") else { fatalError() }
-         print(dataType.error)
-         print(dataType.description())
-         */
         
         let resolve = try evaluateObjCExpression("(id)TFE_TensorHandleResolve((id)\(pointerAddress),\(status.name!))", at: frame)
         let tensorByteSize = try evaluateObjCExpression("(int)TF_TensorByteSize((id)\(resolve.name!), \(status.name!))", at: frame)
@@ -170,13 +160,19 @@ extension Processor: ProcessorInput {
         let byteSize = try readPointerValue(in: tensorByteSize)
         let tensorData = try evaluateObjCExpression("(id)TF_TensorData((id)\(resolve.name!))", at: frame)
         
+        var shape = [Int64]()
+        let numDims = try evaluateObjCExpression("(int)TF_NumDims((id)\(resolve.name!))", at: frame)
+        
+//        for dimIndex in 0..< {
+//            let
+//        }
+        
         let dataAddress = try readPointerValue(in: tensorData)
         
-        let data = process.readMemory(dataAddress..<dataAddress+byteSize)
-        if let error = data.error, error.code != 0 { throw ProcessorError.canNotReadInputTensor }
+        let data = try process.readMemory(dataAddress..<dataAddress+byteSize)
         
-        let collection = data.data.withUnsafeBytes { (pointer: UnsafePointer<Float>) -> [Float] in
-            return Array(UnsafeBufferPointer<Float>(start: pointer, count: data.data.count / MemoryLayout<Float>.size))
+        let collection = data.withUnsafeBytes { (pointer: UnsafePointer<Float>) -> [Float] in
+            return Array(UnsafeBufferPointer<Float>(start: pointer, count: data.count / MemoryLayout<Float>.size))
         }
         
         self.output.outputStreamReceived("Input tensor[0] value: \(collection)\n\n")
@@ -203,9 +199,9 @@ extension Processor: ProcessorInput {
                            tensorArgumentCount: r8PointerValue,
                            at: process)
 
-        let graphData: Data = try readValue(by: rdiPointerValue, size: Int(rsiPointerValue), in: process)
-        // Read first 128 byte, C string has terminator \0 so it will find finish.
-        let entryFunctionBaseName: String = try readValue(by: rdxPointerValue, size: 128, in: process)
+        let graphData = try process.readMemory(rdiPointerValue..<rdiPointerValue + rsiPointerValue)
+        
+        let entryFunctionBaseName: String = try process.readString(rdxPointerValue)
 
         return MetaGraph(program: graphData, entryFunctionBaseName: entryFunctionBaseName, tensorArgument: [])
     }
@@ -396,11 +392,13 @@ extension Processor: ProcessorInput {
                     
                     let startAddress = UInt64(stepAddress) + UInt64(rdiValue)
                     let endAddress = startAddress + UInt64(rsiValue)
-                    let result = process.readMemory(startAddress..<endAddress)
-                    if let error = result.error, error.code != 0 {
+                    do {
+                        let result = try process.readMemory(startAddress..<endAddress)
+                        callback(.positive(value: result))
+                    } catch {
                         callback(.negative(error: error))
                     }
-                    callback(.positive(value: result.data))
+                    
                     return
                 }
             }
@@ -486,34 +484,6 @@ extension Processor: ProcessorInput {
 
 //MARK: - Helper
 extension Processor {
-    func readValue<T: Any>(by address: UInt64, size: Int, in process: LLDBProcess) throws -> T {
-        let result = process.readMemory(address..<address + UInt64(size))
-        if let error = result.error, error.code != 0 {
-            throw error
-        }
-        
-        switch T.self {
-        case is String.Type:
-            
-            let string = result.data.withUnsafeBytes { (pointer: UnsafePointer<UInt8>) -> String in
-                return String(cString: pointer)
-            }
-            if let string = string as? T {
-                return string
-            }
-            break
-            
-        case is Data.Type:
-            if let data = result.data as? T {
-                return data
-            }
-            break
-        default:
-            break
-        }
-        throw ProcessorError.canNotReadArgument
-    }
-    
     func readPointerValue(in value: LLDBValue) throws -> UInt64 {
         let data = try value.data.readRawData()
         let argValue = data.withUnsafeBytes { (pointer: UnsafePointer<UInt64>) -> UInt64 in
