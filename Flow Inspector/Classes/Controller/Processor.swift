@@ -137,51 +137,57 @@ extension Processor: ProcessorInput {
         return resolve
     }
     
-    func extractTensors(tensorArgumentAddress: UInt64, tensorArgumentCount: UInt64, at process: LLDBProcess) throws {
-        guard tensorArgumentCount > 0 else { return }
-        guard let thread = process.threads.first else  { return }
-        guard let frame = thread.frames.first else  { return }
-
+    func extractTensors(tensorArgumentAddress: UInt64, tensorArgumentCount: UInt64, at process: LLDBProcess) throws -> [Tensorflow_TensorProto] {
+        guard tensorArgumentCount > 0 else { return [] }
+        guard let thread = process.threads.first else  { throw ProcessorError.canNotReadArgument }
+        guard let frame = thread.frames.first else  { throw ProcessorError.canNotReadArgument }
+        var tensors = [Tensorflow_TensorProto]()
         let status = try evaluateObjCExpression("(id)TF_NewStatus()", at: frame)
-        
         let pointers = try evaluateObjCExpression("(const void *)\(tensorArgumentAddress)]", at: frame)
-        let tensorPointer = try evaluateObjCExpression("((long *) \(pointers.name!))[0]", at: frame)
-        let pointerAddress = try readPointerValue(in: tensorPointer)
-        
-        let tensorAddressValue = try evaluateObjCExpression("(id)TFE_TensorHandleResolve((id)\(pointerAddress),\(status.name!))", at: frame)
-        let tensorByteSize = try evaluateObjCExpression("(int)TF_TensorByteSize((id)\(tensorAddressValue.name!), \(status.name!))", at: frame)
-        
-        let typeValue = try evaluateObjCExpression("(id)TF_TensorType((id)\(tensorAddressValue.name!))", at: frame)
-        let rawType: Int = try typeValue.data.readRawData().unsafeCast()
-        guard let type = Tensorflow_DataType(rawValue: rawType) else { throw ProcessorError.canNotReadArgument }
-        
-        //Reading data
-        let byteSize = try readPointerValue(in: tensorByteSize)
-        let tensorData = try evaluateObjCExpression("(id)TF_TensorData((id)\(tensorAddressValue.name!))", at: frame)
-        
-        var shape = [Int64]()
-        let numDims = try evaluateObjCExpression("(int)TF_NumDims((id)\(tensorAddressValue.name!))", at: frame)
-        let dimCount: Int32 = try numDims.data.readRawData().unsafeCast()
-        for dimIndex in 0..<dimCount {
-            let dim = try evaluateObjCExpression("(int)TF_Dim((id)\(tensorAddressValue.name!), \(dimIndex))", at: frame)
-            let dimention: Int32 = try dim.data.readRawData().unsafeCast()
-            shape.append(Int64(dimention))
-        }
 
-        let dataAddress = try readPointerValue(in: tensorData)
-        
-        let data = try process.readMemory(dataAddress..<dataAddress+byteSize)
-        
-        var tensor = Tensorflow_TensorProto()
-        tensor.dtype = type
-        tensor.tensorContent = data
-        var tensorShape = Tensorflow_TensorShapeProto()
-        tensorShape.dim = shape.map({ (value) -> Tensorflow_TensorShapeProto.Dim in
-            var dim = Tensorflow_TensorShapeProto.Dim()
-            dim.size = value
-            return dim
-        })
-        tensor.tensorShape = tensorShape
+        for tensorIndex in 0..<tensorArgumentCount {
+            
+            let tensorPointer = try evaluateObjCExpression("((long *) \(pointers.name!))[\(tensorIndex)]", at: frame)
+            let pointerAddress = try readPointerValue(in: tensorPointer)
+            
+            let tensorAddressValue = try evaluateObjCExpression("(id)TFE_TensorHandleResolve((id)\(pointerAddress),\(status.name!))", at: frame)
+            let tensorByteSize = try evaluateObjCExpression("(int)TF_TensorByteSize((id)\(tensorAddressValue.name!), \(status.name!))", at: frame)
+            
+            let typeValue = try evaluateObjCExpression("(id)TF_TensorType((id)\(tensorAddressValue.name!))", at: frame)
+            let rawType: Int = try typeValue.data.readRawData().unsafeCast()
+            guard let type = Tensorflow_DataType(rawValue: rawType) else { throw ProcessorError.canNotReadArgument }
+            
+            //Reading data
+            let byteSize = try readPointerValue(in: tensorByteSize)
+            let tensorData = try evaluateObjCExpression("(id)TF_TensorData((id)\(tensorAddressValue.name!))", at: frame)
+            
+            var shape = [Int64]()
+            let numDims = try evaluateObjCExpression("(int)TF_NumDims((id)\(tensorAddressValue.name!))", at: frame)
+            let dimCount: Int32 = try numDims.data.readRawData().unsafeCast()
+            for dimIndex in 0..<dimCount {
+                let dim = try evaluateObjCExpression("(int)TF_Dim((id)\(tensorAddressValue.name!), \(dimIndex))", at: frame)
+                let dimention: Int32 = try dim.data.readRawData().unsafeCast()
+                shape.append(Int64(dimention))
+            }
+            
+            let dataAddress = try readPointerValue(in: tensorData)
+            
+            let data = try process.readMemory(dataAddress..<dataAddress+byteSize)
+            
+            var tensor = Tensorflow_TensorProto()
+            tensor.dtype = type
+            tensor.tensorContent = data
+            var tensorShape = Tensorflow_TensorShapeProto()
+            tensorShape.dim = shape.map({ (value) -> Tensorflow_TensorShapeProto.Dim in
+                var dim = Tensorflow_TensorShapeProto.Dim()
+                dim.size = value
+                return dim
+            })
+            tensor.tensorShape = tensorShape
+            tensors.append(tensor)
+        }
+        print(try tensors.map  { try $0.jsonString() })
+        return tensors
     }
     
     func readArguments(_ registers: [LLDBValue], process: LLDBProcess) throws -> MetaGraph {
@@ -191,16 +197,16 @@ extension Processor: ProcessorInput {
         let rdxPointerValue = try lookingForFirstPointerValue("rdx", at: registers)
         let rcxPointerValue = try lookingForFirstPointerValue("rcx", at: registers) //tensorArgumentAddress
         let r8PointerValue = try lookingForFirstPointerValue("r8", at: registers) //tensorArgumentCount
-
-        try extractTensors(tensorArgumentAddress: rcxPointerValue,
-                           tensorArgumentCount: r8PointerValue,
-                           at: process)
-
+        
+        let input = try extractTensors(tensorArgumentAddress: rcxPointerValue,
+                                       tensorArgumentCount: r8PointerValue,
+                                       at: process)
+        
         let graphData = try process.readMemory(rdiPointerValue..<rdiPointerValue + rsiPointerValue)
         
         let entryFunctionBaseName: String = try process.readString(rdxPointerValue)
-
-        return MetaGraph(program: graphData, entryFunctionBaseName: entryFunctionBaseName, tensorArgument: [])
+        
+        return MetaGraph(program: graphData, entryFunctionBaseName: entryFunctionBaseName, tensorArgument: input)
     }
     
     func extractMainGraph(preferences: Preferences, callback: @escaping ResultCompletion<MetaGraph>) {
