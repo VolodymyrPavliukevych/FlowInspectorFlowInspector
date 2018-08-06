@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD0253022118660300DA63E3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0253012118660300DA63E3 /* Extension.swift */; };
 		CD07566020D8F52B00B643C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD07565F20D8F52B00B643C3 /* Assets.xcassets */; };
 		CD11D75D20EA99450024D493 /* LLDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD11D75B20EA99450024D493 /* LLDB.framework */; };
 		CD11D75E20EA99450024D493 /* LLDBKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD11D75C20EA99450024D493 /* LLDBKit.framework */; };
@@ -93,6 +94,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CD0253012118660300DA63E3 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		CD07565620D8F52900B643C3 /* Flow Inspector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flow Inspector.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD07565F20D8F52B00B643C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD07566420D8F52B00B643C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				CD11D76220EA99F20024D493 /* Processor.swift */,
 				CDA6E21F20F507D600F60152 /* GoogleReporter.swift */,
 				CD3C459420FCC63C0001119C /* Result.swift */,
+				CD0253012118660300DA63E3 /* Extension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				CDDFA66920E244A200945622 /* DebugViewController.swift in Sources */,
 				CD28E49C20E11DD200C28897 /* ProjectWindow.swift in Sources */,
 				CD28E49920E11DB300C28897 /* FIDocument.swift in Sources */,
+				CD0253022118660300DA63E3 /* Extension.swift in Sources */,
 				CDDFA66620E2448E00945622 /* CodeViewController.swift in Sources */,
 				CD14849120ED1BEC00652A93 /* GraphViewController.swift in Sources */,
 				CD28E49820E11DB300C28897 /* AppDelegate.swift in Sources */,
@@ -601,7 +605,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = YN4TK7JQSA;
+				DEVELOPMENT_TEAM = 5AMLKCQ2TQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flow\\ Inspector/Frameworks",
@@ -626,7 +630,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = YN4TK7JQSA;
+				DEVELOPMENT_TEAM = 5AMLKCQ2TQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flow\\ Inspector/Frameworks",

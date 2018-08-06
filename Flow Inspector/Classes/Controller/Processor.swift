@@ -152,19 +152,19 @@ extension Processor: ProcessorInput {
         let tensorByteSize = try evaluateObjCExpression("(int)TF_TensorByteSize((id)\(tensorAddressValue.name!), \(status.name!))", at: frame)
         
         let typeValue = try evaluateObjCExpression("(id)TF_TensorType((id)\(tensorAddressValue.name!))", at: frame)
-        let rawType: Int = try typeValue.data.readRawData().asValue()
+        let rawType: Int = try typeValue.data.readRawData().unsafeCast()
         guard let type = Tensorflow_DataType(rawValue: rawType) else { throw ProcessorError.canNotReadArgument }
-
+        
         //Reading data
         let byteSize = try readPointerValue(in: tensorByteSize)
         let tensorData = try evaluateObjCExpression("(id)TF_TensorData((id)\(tensorAddressValue.name!))", at: frame)
         
         var shape = [Int64]()
         let numDims = try evaluateObjCExpression("(int)TF_NumDims((id)\(tensorAddressValue.name!))", at: frame)
-        let dimCount: Int32 = try numDims.data.readRawData().asValue()
+        let dimCount: Int32 = try numDims.data.readRawData().unsafeCast()
         for dimIndex in 0..<dimCount {
             let dim = try evaluateObjCExpression("(int)TF_Dim((id)\(tensorAddressValue.name!), \(dimIndex))", at: frame)
-            let dimention: Int32 = try dim.data.readRawData().asValue()
+            let dimention: Int32 = try dim.data.readRawData().unsafeCast()
             shape.append(Int64(dimention))
         }
 
@@ -172,14 +172,9 @@ extension Processor: ProcessorInput {
         
         let data = try process.readMemory(dataAddress..<dataAddress+byteSize)
         
-        let collection = data.withUnsafeBytes { (pointer: UnsafePointer<Float>) -> [Float] in
-            return Array(UnsafeBufferPointer<Float>(start: pointer, count: data.count / MemoryLayout<Float>.size))
-        }
-        
-        self.output.outputStreamReceived("Input tensor[0] value: \(collection)\n\n")
-        
         var tensor = Tensorflow_TensorProto()
         tensor.dtype = type
+        tensor.tensorContent = data
         var tensorShape = Tensorflow_TensorShapeProto()
         tensorShape.dim = shape.map({ (value) -> Tensorflow_TensorShapeProto.Dim in
             var dim = Tensorflow_TensorShapeProto.Dim()
@@ -187,9 +182,6 @@ extension Processor: ProcessorInput {
             return dim
         })
         tensor.tensorShape = tensorShape
-        
-        
-        
     }
     
     func readArguments(_ registers: [LLDBValue], process: LLDBProcess) throws -> MetaGraph {

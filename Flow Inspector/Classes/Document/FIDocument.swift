@@ -86,7 +86,7 @@ struct GraphModel {
 }
 
 struct FIDocumentModel { /*SWIFT_TENSORFLOW_ENABLE_DEBUG_LOGGING=true,*/
-    var preferences: Preferences = Preferences(argument: "4.54", environment: "PATH=/Library/Developer/Toolchains/swift-latest/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin")
+    var preferences: Preferences = Preferences(argument: "4.54,0.001", environment: "PATH=/Library/Developer/Toolchains/swift-latest/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin")
     var sourceFilePath: String?
     var binFilePath: String?
     var dSYMFilePath: String?
