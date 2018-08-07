@@ -44,6 +44,8 @@ protocol ProcessorOutput {
 }
 
 struct MetaGraph {
+    static let outputKey = "tfc_output_0_main.tf"
+    static let inputKey = "tfc_input_0_main.tf"
     let program: Data
     let entryFunctionBaseName: String
     let tensorArgument: [Tensorflow_TensorProto]
@@ -186,7 +188,6 @@ extension Processor: ProcessorInput {
             tensor.tensorShape = tensorShape
             tensors.append(tensor)
         }
-        print(try tensors.map  { try $0.jsonString() })
         return tensors
     }
     
@@ -197,7 +198,7 @@ extension Processor: ProcessorInput {
         let rdxPointerValue = try lookingForFirstPointerValue("rdx", at: registers)
         let rcxPointerValue = try lookingForFirstPointerValue("rcx", at: registers) //tensorArgumentAddress
         let r8PointerValue = try lookingForFirstPointerValue("r8", at: registers) //tensorArgumentCount
-        
+
         let input = try extractTensors(tensorArgumentAddress: rcxPointerValue,
                                        tensorArgumentCount: r8PointerValue,
                                        at: process)
@@ -262,8 +263,11 @@ extension Processor: ProcessorInput {
             } catch {
                 callback(error.toResult())
             }
-            
-            return true
+            if self.state == .lookingForMainGraph(state: .found) {
+                return false
+            } else {
+                return true
+            }
         }
         
         // Finish
@@ -325,7 +329,11 @@ extension Processor: ProcessorInput {
                                          program: program,
                                          functionName: functionName,
                                          callback: localCallback)
-            return true
+            if self.state == .lookingForFunctionGraph(state: .found) {
+                return false
+            } else {
+                return true
+            }
         }
         
         // Finish
@@ -418,8 +426,12 @@ extension Processor: ProcessorInput {
                 finish(ProcessorError.canNotLoadDebugger)
                 return
             }
-            
             let target = try lldb.createTarget(at: binURL.path)
+            
+            defer {
+                lldb.delete(target)
+                LLDBGlobals.terminate()
+            }
             
             let _ = createBreakpoint(target)
             
@@ -458,8 +470,12 @@ extension Processor: ProcessorInput {
                                 finish(error)
                                 return
                             }
+                        } else {
+                            if let error = process.destroy(), error.code != 0 {
+                                finish(error)
+                                return
+                            }
                         }
-                        continue
                     }
                     print("Not used event: ", event.description(), event.type, " Process state: ", process.state)
                 }

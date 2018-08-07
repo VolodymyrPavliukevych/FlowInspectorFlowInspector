@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14306.4"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NavigatorAreaViewController" customModule="Flow_Inspector" customModuleProvider="target">
+            <connections>
+                <outlet property="contentContainer" destination="2JG-JK-OZW" id="zd2-CT-JxS"/>
+                <outlet property="toolBarView" destination="yEQ-uA-HFP" id="upo-CM-nOI"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="yEQ-uA-HFP">
+                    <rect key="frame" x="0.0" y="240" width="480" height="30"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SXs-It-cEO">
+                            <rect key="frame" x="20" y="0.0" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="folder" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="A8P-wz-C05">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-71-Baf">
+                            <rect key="frame" x="58" y="0.0" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="tensor" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="wnj-Um-hA1">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUr-sq-FR6">
+                            <rect key="frame" x="96" y="0.0" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="breakpoint" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="vob-SZ-alt">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Rcn-xu-kSD">
+                            <rect key="frame" x="0.0" y="-2" width="480" height="5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="pG4-CK-6p0"/>
+                            </constraints>
+                        </box>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Rcn-xu-kSD" secondAttribute="bottom" id="QRL-cI-kex"/>
+                        <constraint firstAttribute="trailing" secondItem="Rcn-xu-kSD" secondAttribute="trailing" id="nD5-78-yOE"/>
+                        <constraint firstItem="Rcn-xu-kSD" firstAttribute="leading" secondItem="yEQ-uA-HFP" secondAttribute="leading" id="vAF-AR-fiJ"/>
+                        <constraint firstAttribute="height" constant="30" id="xwI-LU-Fli"/>
+                    </constraints>
+                </customView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="2JG-JK-OZW">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="240"/>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="2JG-JK-OZW" secondAttribute="trailing" id="D0K-5o-ror"/>
+                <constraint firstItem="yEQ-uA-HFP" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="E48-RD-if0"/>
+                <constraint firstAttribute="bottom" secondItem="2JG-JK-OZW" secondAttribute="bottom" id="eKz-gh-MD6"/>
+                <constraint firstItem="yEQ-uA-HFP" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="esg-6B-oJi"/>
+                <constraint firstItem="2JG-JK-OZW" firstAttribute="top" secondItem="yEQ-uA-HFP" secondAttribute="bottom" id="gTr-3N-JJT"/>
+                <constraint firstAttribute="trailing" secondItem="yEQ-uA-HFP" secondAttribute="trailing" id="jaB-eA-9bW"/>
+                <constraint firstItem="2JG-JK-OZW" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="yBZ-yY-TwV"/>
+            </constraints>
+        </customView>
+    </objects>
+    <resources>
+        <image name="breakpoint" width="16" height="16"/>
+        <image name="folder" width="16" height="16"/>
+        <image name="tensor" width="16" height="16"/>
+    </resources>
+</document>

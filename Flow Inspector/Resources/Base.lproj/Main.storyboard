@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14306.4"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -826,7 +826,7 @@
                             <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6oZ-6S-naN">
                                 <rect key="frame" x="0.0" y="0.0" width="1019" height="480"/>
                                 <subviews>
-                                    <containerView id="1Ym-l4-YKP" userLabel="SourceTreeContainer">
+                                    <containerView id="1Ym-l4-YKP" userLabel="NavigatorAreaContainer">
                                         <rect key="frame" x="0.0" y="0.0" width="225" height="480"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <constraints>
@@ -878,7 +878,7 @@
                         <outlet property="codeContainerView" destination="doT-xg-dGf" id="nka-Tv-waB"/>
                         <outlet property="debugContainerView" destination="Tef-0H-M7j" id="R7w-Fx-8QU"/>
                         <outlet property="graphContainer" destination="KnX-P4-AoR" id="YN1-Or-5S8"/>
-                        <outlet property="sourceTreeContainerView" destination="1Ym-l4-YKP" id="Afs-8A-sGT"/>
+                        <outlet property="navigatorAreaContainerView" destination="1Ym-l4-YKP" id="j4H-Wx-sUg"/>
                     </connections>
                 </viewController>
                 <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

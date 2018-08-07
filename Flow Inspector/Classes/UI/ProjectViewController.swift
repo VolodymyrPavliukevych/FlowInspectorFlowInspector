@@ -10,7 +10,7 @@ import Cocoa
 
 class ProjectViewController: NSViewController {
     
-    @IBOutlet weak var sourceTreeContainerView: NSView!
+    @IBOutlet weak var navigatorAreaContainerView: NSView!
     @IBOutlet weak var codeContainerView: NSView!
     @IBOutlet weak var debugContainerView: NSView!
     @IBOutlet weak var graphContainer: NSView!
@@ -20,12 +20,12 @@ class ProjectViewController: NSViewController {
     var debugViewController: DebugViewController!
     var sourceTreeViewController: SourceTreeViewController!
     var graphViewController: GraphViewController!
-    
+    var navigatorAreaViewController: NavigatorAreaViewController!
     var documentInteraction: FIDocumentInteraction?
         
     internal func inject(documentInteraction: FIDocumentInteraction) {
         self.documentInteraction = documentInteraction
-        self.sourceTreeViewController.output = documentInteraction
+        //self.sourceTreeViewController.output = documentInteraction
         self.codeViewController.output = documentInteraction
         self.graphViewController.output = documentInteraction
         documentInteraction.injectCodeViewInput(codeViewController)
@@ -37,7 +37,7 @@ class ProjectViewController: NSViewController {
         super.viewDidLoad()
         codeViewController = attachViewController(on: codeContainerView) as CodeViewController
         debugViewController = attachViewController(on: debugContainerView) as DebugViewController
-        sourceTreeViewController = attachViewController(on: sourceTreeContainerView) as SourceTreeViewController
+        navigatorAreaViewController = attachViewController(on: navigatorAreaContainerView) as NavigatorAreaViewController
         graphViewController = attachViewController(on: graphContainer) as GraphViewController
     }
 
