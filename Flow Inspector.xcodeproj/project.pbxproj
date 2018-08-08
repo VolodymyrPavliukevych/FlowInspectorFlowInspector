@@ -9,30 +9,17 @@
 /* Begin PBXBuildFile section */
 		CD0253022118660300DA63E3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0253012118660300DA63E3 /* Extension.swift */; };
 		CD07566020D8F52B00B643C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD07565F20D8F52B00B643C3 /* Assets.xcassets */; };
-		CD0F23422119CE9900921E4B /* TensorInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F23402119CE9900921E4B /* TensorInfoViewController.swift */; };
-		CD0F23432119CE9900921E4B /* TensorInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD0F23412119CE9900921E4B /* TensorInfoViewController.xib */; };
-		CD0F23462119CEBC00921E4B /* BreakpointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F23442119CEBC00921E4B /* BreakpointViewController.swift */; };
-		CD0F23472119CEBC00921E4B /* BreakpointViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD0F23452119CEBC00921E4B /* BreakpointViewController.xib */; };
-		CD0F234A2119DA4700921E4B /* InfoAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F23482119DA4700921E4B /* InfoAreaViewController.swift */; };
-		CD0F234B2119DA4700921E4B /* InfoAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD0F23492119DA4700921E4B /* InfoAreaViewController.xib */; };
 		CD11D75D20EA99450024D493 /* LLDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD11D75B20EA99450024D493 /* LLDB.framework */; };
 		CD11D75E20EA99450024D493 /* LLDBKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD11D75C20EA99450024D493 /* LLDBKit.framework */; };
 		CD11D76020EA99570024D493 /* LLDB.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CD11D75B20EA99450024D493 /* LLDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD11D76120EA99570024D493 /* LLDBKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CD11D75C20EA99450024D493 /* LLDBKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD11D76320EA99F20024D493 /* Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD11D76220EA99F20024D493 /* Processor.swift */; };
-		CD14849120ED1BEC00652A93 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD14848F20ED1BEC00652A93 /* GraphViewController.swift */; };
-		CD14849220ED1BEC00652A93 /* GraphViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD14849020ED1BEC00652A93 /* GraphViewController.xib */; };
 		CD28E49120E11BC100C28897 /* flow.icns in Resources */ = {isa = PBXBuildFile; fileRef = CD28E49020E11BC100C28897 /* flow.icns */; };
 		CD28E49820E11DB300C28897 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28E49320E11DB300C28897 /* AppDelegate.swift */; };
 		CD28E49920E11DB300C28897 /* FIDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28E49520E11DB300C28897 /* FIDocument.swift */; };
-		CD28E49A20E11DB300C28897 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28E49720E11DB300C28897 /* ProjectViewController.swift */; };
-		CD28E49C20E11DD200C28897 /* ProjectWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28E49B20E11DD200C28897 /* ProjectWindow.swift */; };
-		CD28E49E20E1200100C28897 /* ProjectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28E49D20E1200100C28897 /* ProjectWindowController.swift */; };
 		CD28E4A020E1249200C28897 /* SourceTreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28E49F20E1249200C28897 /* SourceTreeController.swift */; };
 		CD3C459520FCC63C0001119C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3C459420FCC63C0001119C /* Result.swift */; };
 		CD6BBBEF20F2141B00DE8073 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6BBBEE20F2141B00DE8073 /* GraphViewModel.swift */; };
-		CD9D75BC20FB65DB0004592E /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D75BA20FB65DB0004592E /* PreferencesWindowController.swift */; };
-		CD9D75BD20FB65DB0004592E /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9D75BB20FB65DB0004592E /* PreferencesWindowController.xib */; };
 		CDA6E22020F507D600F60152 /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA6E21F20F507D600F60152 /* GoogleReporter.swift */; };
 		CDA7CBCA20EFE6D90088FE94 /* graph.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDA7CBC920EFE6D90088FE94 /* graph.bundle */; };
 		CDA7CDA220EFEEAD0088FE94 /* TensorFlowKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CD9B20EFEEAC0088FE94 /* TensorFlowKit.framework */; };
@@ -55,15 +42,29 @@
 		CDAB847A20E6302700E334B5 /* swift-source_Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = CDAB847920E6302700E334B5 /* swift-source_Icon.icns */; };
 		CDAB847D20E632C600E334B5 /* dSYM_Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = CDAB847B20E632C600E334B5 /* dSYM_Icon.icns */; };
 		CDAB847E20E632C600E334B5 /* processorusagepoint.icns in Resources */ = {isa = PBXBuildFile; fileRef = CDAB847C20E632C600E334B5 /* processorusagepoint.icns */; };
-		CDB166EC2119C78300A84137 /* NavigatorAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB166EA2119C78300A84137 /* NavigatorAreaViewController.swift */; };
-		CDB166ED2119C78300A84137 /* NavigatorAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB166EB2119C78300A84137 /* NavigatorAreaViewController.xib */; };
+		CDB3399C211AE38800D41B36 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB33982211AE38800D41B36 /* PreferencesWindowController.swift */; };
+		CDB3399D211AE38800D41B36 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB33983211AE38800D41B36 /* PreferencesWindowController.xib */; };
+		CDB339A8211AE38800D41B36 /* CodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB33990211AE38800D41B36 /* CodeViewController.xib */; };
+		CDB339A9211AE38800D41B36 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB33991211AE38800D41B36 /* CodeViewController.swift */; };
+		CDB339AA211AE38800D41B36 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB33993211AE38800D41B36 /* GraphViewController.swift */; };
+		CDB339AB211AE38800D41B36 /* GraphViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB33994211AE38800D41B36 /* GraphViewController.xib */; };
+		CDB339AC211AE38800D41B36 /* ProjectWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB33996211AE38800D41B36 /* ProjectWindow.swift */; };
+		CDB339AD211AE38800D41B36 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB33997211AE38800D41B36 /* ProjectViewController.swift */; };
+		CDB339AE211AE38800D41B36 /* ProjectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB33998211AE38800D41B36 /* ProjectWindowController.swift */; };
+		CDB339AF211AE38800D41B36 /* DebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB3399A211AE38800D41B36 /* DebugViewController.xib */; };
+		CDB339B0211AE38800D41B36 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB3399B211AE38800D41B36 /* DebugViewController.swift */; };
+		CDB339BB211AE39900D41B36 /* TensorInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339B1211AE39900D41B36 /* TensorInfoViewController.swift */; };
+		CDB339BC211AE39900D41B36 /* NavigatorAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB339B2211AE39900D41B36 /* NavigatorAreaViewController.xib */; };
+		CDB339BD211AE39900D41B36 /* TensorInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB339B3211AE39900D41B36 /* TensorInfoViewController.xib */; };
+		CDB339BE211AE39900D41B36 /* BreakpointViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB339B4211AE39900D41B36 /* BreakpointViewController.xib */; };
+		CDB339BF211AE39900D41B36 /* InfoAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB339B5211AE39900D41B36 /* InfoAreaViewController.xib */; };
+		CDB339C0211AE39900D41B36 /* NavigatorAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339B6211AE39900D41B36 /* NavigatorAreaViewController.swift */; };
+		CDB339C1211AE39900D41B36 /* InfoAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339B7211AE39900D41B36 /* InfoAreaViewController.swift */; };
+		CDB339C2211AE39900D41B36 /* SourceTreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB339B8211AE39900D41B36 /* SourceTreeViewController.xib */; };
+		CDB339C3211AE39900D41B36 /* SourceTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339B9211AE39900D41B36 /* SourceTreeViewController.swift */; };
+		CDB339C4211AE39900D41B36 /* BreakpointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339BA211AE39900D41B36 /* BreakpointViewController.swift */; };
+		CDB339C7211AEB4E00D41B36 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339C6211AEB4E00D41B36 /* TabButton.swift */; };
 		CDDFA64B20E2357900945622 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDDFA64920E2357900945622 /* Main.storyboard */; };
-		CDDFA66320E2448E00945622 /* SourceTreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDDFA65F20E2448E00945622 /* SourceTreeViewController.xib */; };
-		CDDFA66420E2448E00945622 /* CodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDDFA66020E2448E00945622 /* CodeViewController.xib */; };
-		CDDFA66520E2448E00945622 /* SourceTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDFA66120E2448E00945622 /* SourceTreeViewController.swift */; };
-		CDDFA66620E2448E00945622 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDFA66220E2448E00945622 /* CodeViewController.swift */; };
-		CDDFA66920E244A200945622 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDFA66720E244A200945622 /* DebugViewController.swift */; };
-		CDDFA66A20E244A200945622 /* DebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDDFA66820E244A200945622 /* DebugViewController.xib */; };
 		CDDFA66C20E2499700945622 /* monaco.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDDFA66B20E2499600945622 /* monaco.bundle */; };
 		CDF42DC520E13B9600EC87B5 /* FIDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF42DC420E13B9600EC87B5 /* FIDocumentController.swift */; };
 /* End PBXBuildFile section */
@@ -107,28 +108,15 @@
 		CD07565F20D8F52B00B643C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD07566420D8F52B00B643C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD07566520D8F52B00B643C3 /* Flow_Inspector.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Flow_Inspector.entitlements; sourceTree = "<group>"; };
-		CD0F23402119CE9900921E4B /* TensorInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorInfoViewController.swift; sourceTree = "<group>"; };
-		CD0F23412119CE9900921E4B /* TensorInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TensorInfoViewController.xib; sourceTree = "<group>"; };
-		CD0F23442119CEBC00921E4B /* BreakpointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakpointViewController.swift; sourceTree = "<group>"; };
-		CD0F23452119CEBC00921E4B /* BreakpointViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreakpointViewController.xib; sourceTree = "<group>"; };
-		CD0F23482119DA4700921E4B /* InfoAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAreaViewController.swift; sourceTree = "<group>"; };
-		CD0F23492119DA4700921E4B /* InfoAreaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoAreaViewController.xib; sourceTree = "<group>"; };
 		CD11D75B20EA99450024D493 /* LLDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LLDB.framework; sourceTree = "<group>"; };
 		CD11D75C20EA99450024D493 /* LLDBKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LLDBKit.framework; sourceTree = "<group>"; };
 		CD11D76220EA99F20024D493 /* Processor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Processor.swift; sourceTree = "<group>"; };
-		CD14848F20ED1BEC00652A93 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
-		CD14849020ED1BEC00652A93 /* GraphViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphViewController.xib; sourceTree = "<group>"; };
 		CD28E49020E11BC100C28897 /* flow.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = flow.icns; sourceTree = "<group>"; };
 		CD28E49320E11DB300C28897 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD28E49520E11DB300C28897 /* FIDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIDocument.swift; sourceTree = "<group>"; };
-		CD28E49720E11DB300C28897 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
-		CD28E49B20E11DD200C28897 /* ProjectWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWindow.swift; sourceTree = "<group>"; };
-		CD28E49D20E1200100C28897 /* ProjectWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWindowController.swift; sourceTree = "<group>"; };
 		CD28E49F20E1249200C28897 /* SourceTreeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTreeController.swift; sourceTree = "<group>"; };
 		CD3C459420FCC63C0001119C /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		CD6BBBEE20F2141B00DE8073 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
-		CD9D75BA20FB65DB0004592E /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
-		CD9D75BB20FB65DB0004592E /* PreferencesWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 		CDA6E21F20F507D600F60152 /* GoogleReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleReporter.swift; sourceTree = "<group>"; };
 		CDA7CBC920EFE6D90088FE94 /* graph.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = graph.bundle; sourceTree = "<group>"; };
 		CDA7CD9B20EFEEAC0088FE94 /* TensorFlowKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TensorFlowKit.framework; sourceTree = "<group>"; };
@@ -144,15 +132,29 @@
 		CDAB847920E6302700E334B5 /* swift-source_Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "swift-source_Icon.icns"; sourceTree = "<group>"; };
 		CDAB847B20E632C600E334B5 /* dSYM_Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = dSYM_Icon.icns; sourceTree = "<group>"; };
 		CDAB847C20E632C600E334B5 /* processorusagepoint.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = processorusagepoint.icns; sourceTree = "<group>"; };
-		CDB166EA2119C78300A84137 /* NavigatorAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorAreaViewController.swift; sourceTree = "<group>"; };
-		CDB166EB2119C78300A84137 /* NavigatorAreaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigatorAreaViewController.xib; sourceTree = "<group>"; };
+		CDB33982211AE38800D41B36 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		CDB33983211AE38800D41B36 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
+		CDB33990211AE38800D41B36 /* CodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeViewController.xib; sourceTree = "<group>"; };
+		CDB33991211AE38800D41B36 /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
+		CDB33993211AE38800D41B36 /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
+		CDB33994211AE38800D41B36 /* GraphViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphViewController.xib; sourceTree = "<group>"; };
+		CDB33996211AE38800D41B36 /* ProjectWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectWindow.swift; sourceTree = "<group>"; };
+		CDB33997211AE38800D41B36 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		CDB33998211AE38800D41B36 /* ProjectWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectWindowController.swift; sourceTree = "<group>"; };
+		CDB3399A211AE38800D41B36 /* DebugViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DebugViewController.xib; sourceTree = "<group>"; };
+		CDB3399B211AE38800D41B36 /* DebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
+		CDB339B1211AE39900D41B36 /* TensorInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorInfoViewController.swift; sourceTree = "<group>"; };
+		CDB339B2211AE39900D41B36 /* NavigatorAreaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigatorAreaViewController.xib; sourceTree = "<group>"; };
+		CDB339B3211AE39900D41B36 /* TensorInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TensorInfoViewController.xib; sourceTree = "<group>"; };
+		CDB339B4211AE39900D41B36 /* BreakpointViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BreakpointViewController.xib; sourceTree = "<group>"; };
+		CDB339B5211AE39900D41B36 /* InfoAreaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoAreaViewController.xib; sourceTree = "<group>"; };
+		CDB339B6211AE39900D41B36 /* NavigatorAreaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigatorAreaViewController.swift; sourceTree = "<group>"; };
+		CDB339B7211AE39900D41B36 /* InfoAreaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoAreaViewController.swift; sourceTree = "<group>"; };
+		CDB339B8211AE39900D41B36 /* SourceTreeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourceTreeViewController.xib; sourceTree = "<group>"; };
+		CDB339B9211AE39900D41B36 /* SourceTreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceTreeViewController.swift; sourceTree = "<group>"; };
+		CDB339BA211AE39900D41B36 /* BreakpointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakpointViewController.swift; sourceTree = "<group>"; };
+		CDB339C6211AEB4E00D41B36 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
 		CDDFA64A20E2357900945622 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CDDFA65F20E2448E00945622 /* SourceTreeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourceTreeViewController.xib; sourceTree = "<group>"; };
-		CDDFA66020E2448E00945622 /* CodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeViewController.xib; sourceTree = "<group>"; };
-		CDDFA66120E2448E00945622 /* SourceTreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceTreeViewController.swift; sourceTree = "<group>"; };
-		CDDFA66220E2448E00945622 /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
-		CDDFA66720E244A200945622 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
-		CDDFA66820E244A200945622 /* DebugViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebugViewController.xib; sourceTree = "<group>"; };
 		CDDFA66B20E2499600945622 /* monaco.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = monaco.bundle; sourceTree = "<group>"; };
 		CDF42DC420E13B9600EC87B5 /* FIDocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIDocumentController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -282,10 +284,13 @@
 		CD28E49620E11DB300C28897 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CDDFA65E20E2448E00945622 /* Sections */,
-				CD28E49720E11DB300C28897 /* ProjectViewController.swift */,
-				CD28E49B20E11DD200C28897 /* ProjectWindow.swift */,
-				CD28E49D20E1200100C28897 /* ProjectWindowController.swift */,
+				CDB339C5211AEB3E00D41B36 /* UIKit */,
+				CDB3398F211AE38800D41B36 /* CodeArea */,
+				CDB33999211AE38800D41B36 /* DebugArea */,
+				CDB33992211AE38800D41B36 /* GraphArea */,
+				CDB33984211AE38800D41B36 /* NavigationArea */,
+				CDB33981211AE38800D41B36 /* Preferences */,
+				CDB33995211AE38800D41B36 /* Project */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -307,29 +312,75 @@
 			path = CTensorFlow;
 			sourceTree = "<group>";
 		};
-		CDDFA65E20E2448E00945622 /* Sections */ = {
+		CDB33981211AE38800D41B36 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				CDDFA66220E2448E00945622 /* CodeViewController.swift */,
-				CDDFA66020E2448E00945622 /* CodeViewController.xib */,
-				CDDFA66120E2448E00945622 /* SourceTreeViewController.swift */,
-				CDDFA65F20E2448E00945622 /* SourceTreeViewController.xib */,
-				CDDFA66720E244A200945622 /* DebugViewController.swift */,
-				CDDFA66820E244A200945622 /* DebugViewController.xib */,
-				CD14848F20ED1BEC00652A93 /* GraphViewController.swift */,
-				CD14849020ED1BEC00652A93 /* GraphViewController.xib */,
-				CD9D75BA20FB65DB0004592E /* PreferencesWindowController.swift */,
-				CD9D75BB20FB65DB0004592E /* PreferencesWindowController.xib */,
-				CDB166EA2119C78300A84137 /* NavigatorAreaViewController.swift */,
-				CDB166EB2119C78300A84137 /* NavigatorAreaViewController.xib */,
-				CD0F23482119DA4700921E4B /* InfoAreaViewController.swift */,
-				CD0F23492119DA4700921E4B /* InfoAreaViewController.xib */,
-				CD0F23402119CE9900921E4B /* TensorInfoViewController.swift */,
-				CD0F23412119CE9900921E4B /* TensorInfoViewController.xib */,
-				CD0F23442119CEBC00921E4B /* BreakpointViewController.swift */,
-				CD0F23452119CEBC00921E4B /* BreakpointViewController.xib */,
+				CDB33982211AE38800D41B36 /* PreferencesWindowController.swift */,
+				CDB33983211AE38800D41B36 /* PreferencesWindowController.xib */,
 			);
-			path = Sections;
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		CDB33984211AE38800D41B36 /* NavigationArea */ = {
+			isa = PBXGroup;
+			children = (
+				CDB339BA211AE39900D41B36 /* BreakpointViewController.swift */,
+				CDB339B4211AE39900D41B36 /* BreakpointViewController.xib */,
+				CDB339B7211AE39900D41B36 /* InfoAreaViewController.swift */,
+				CDB339B5211AE39900D41B36 /* InfoAreaViewController.xib */,
+				CDB339B6211AE39900D41B36 /* NavigatorAreaViewController.swift */,
+				CDB339B2211AE39900D41B36 /* NavigatorAreaViewController.xib */,
+				CDB339B9211AE39900D41B36 /* SourceTreeViewController.swift */,
+				CDB339B8211AE39900D41B36 /* SourceTreeViewController.xib */,
+				CDB339B1211AE39900D41B36 /* TensorInfoViewController.swift */,
+				CDB339B3211AE39900D41B36 /* TensorInfoViewController.xib */,
+			);
+			path = NavigationArea;
+			sourceTree = "<group>";
+		};
+		CDB3398F211AE38800D41B36 /* CodeArea */ = {
+			isa = PBXGroup;
+			children = (
+				CDB33990211AE38800D41B36 /* CodeViewController.xib */,
+				CDB33991211AE38800D41B36 /* CodeViewController.swift */,
+			);
+			path = CodeArea;
+			sourceTree = "<group>";
+		};
+		CDB33992211AE38800D41B36 /* GraphArea */ = {
+			isa = PBXGroup;
+			children = (
+				CDB33993211AE38800D41B36 /* GraphViewController.swift */,
+				CDB33994211AE38800D41B36 /* GraphViewController.xib */,
+			);
+			path = GraphArea;
+			sourceTree = "<group>";
+		};
+		CDB33995211AE38800D41B36 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				CDB33996211AE38800D41B36 /* ProjectWindow.swift */,
+				CDB33997211AE38800D41B36 /* ProjectViewController.swift */,
+				CDB33998211AE38800D41B36 /* ProjectWindowController.swift */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		CDB33999211AE38800D41B36 /* DebugArea */ = {
+			isa = PBXGroup;
+			children = (
+				CDB3399A211AE38800D41B36 /* DebugViewController.xib */,
+				CDB3399B211AE38800D41B36 /* DebugViewController.swift */,
+			);
+			path = DebugArea;
+			sourceTree = "<group>";
+		};
+		CDB339C5211AEB3E00D41B36 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				CDB339C6211AEB4E00D41B36 /* TabButton.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,23 +482,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDDFA66A20E244A200945622 /* DebugViewController.xib in Resources */,
+				CDB3399D211AE38800D41B36 /* PreferencesWindowController.xib in Resources */,
+				CDB339BE211AE39900D41B36 /* BreakpointViewController.xib in Resources */,
+				CDB339BD211AE39900D41B36 /* TensorInfoViewController.xib in Resources */,
+				CDB339AF211AE38800D41B36 /* DebugViewController.xib in Resources */,
 				CDDFA64B20E2357900945622 /* Main.storyboard in Resources */,
 				CDAB847D20E632C600E334B5 /* dSYM_Icon.icns in Resources */,
-				CD0F234B2119DA4700921E4B /* InfoAreaViewController.xib in Resources */,
-				CDB166ED2119C78300A84137 /* NavigatorAreaViewController.xib in Resources */,
-				CDDFA66320E2448E00945622 /* SourceTreeViewController.xib in Resources */,
 				CDAB847E20E632C600E334B5 /* processorusagepoint.icns in Resources */,
 				CD28E49120E11BC100C28897 /* flow.icns in Resources */,
+				CDB339A8211AE38800D41B36 /* CodeViewController.xib in Resources */,
+				CDB339AB211AE38800D41B36 /* GraphViewController.xib in Resources */,
+				CDB339BC211AE39900D41B36 /* NavigatorAreaViewController.xib in Resources */,
+				CDB339C2211AE39900D41B36 /* SourceTreeViewController.xib in Resources */,
 				CDA7CBCA20EFE6D90088FE94 /* graph.bundle in Resources */,
-				CD9D75BD20FB65DB0004592E /* PreferencesWindowController.xib in Resources */,
-				CD14849220ED1BEC00652A93 /* GraphViewController.xib in Resources */,
 				CDAB847A20E6302700E334B5 /* swift-source_Icon.icns in Resources */,
-				CD0F23472119CEBC00921E4B /* BreakpointViewController.xib in Resources */,
-				CDDFA66420E2448E00945622 /* CodeViewController.xib in Resources */,
 				CDDFA66C20E2499700945622 /* monaco.bundle in Resources */,
-				CD0F23432119CE9900921E4B /* TensorInfoViewController.xib in Resources */,
 				CD07566020D8F52B00B643C3 /* Assets.xcassets in Resources */,
+				CDB339BF211AE39900D41B36 /* InfoAreaViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,27 +516,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD0F23422119CE9900921E4B /* TensorInfoViewController.swift in Sources */,
-				CD28E49E20E1200100C28897 /* ProjectWindowController.swift in Sources */,
+				CDB339BB211AE39900D41B36 /* TensorInfoViewController.swift in Sources */,
+				CDB339C1211AE39900D41B36 /* InfoAreaViewController.swift in Sources */,
 				CDA6E22020F507D600F60152 /* GoogleReporter.swift in Sources */,
-				CDDFA66520E2448E00945622 /* SourceTreeViewController.swift in Sources */,
 				CD11D76320EA99F20024D493 /* Processor.swift in Sources */,
-				CD28E49A20E11DB300C28897 /* ProjectViewController.swift in Sources */,
+				CDB3399C211AE38800D41B36 /* PreferencesWindowController.swift in Sources */,
 				CD28E4A020E1249200C28897 /* SourceTreeController.swift in Sources */,
-				CD0F23462119CEBC00921E4B /* BreakpointViewController.swift in Sources */,
 				CD3C459520FCC63C0001119C /* Result.swift in Sources */,
-				CDB166EC2119C78300A84137 /* NavigatorAreaViewController.swift in Sources */,
-				CDDFA66920E244A200945622 /* DebugViewController.swift in Sources */,
-				CD28E49C20E11DD200C28897 /* ProjectWindow.swift in Sources */,
 				CD28E49920E11DB300C28897 /* FIDocument.swift in Sources */,
+				CDB339C0211AE39900D41B36 /* NavigatorAreaViewController.swift in Sources */,
 				CD0253022118660300DA63E3 /* Extension.swift in Sources */,
-				CDDFA66620E2448E00945622 /* CodeViewController.swift in Sources */,
-				CD14849120ED1BEC00652A93 /* GraphViewController.swift in Sources */,
-				CD0F234A2119DA4700921E4B /* InfoAreaViewController.swift in Sources */,
 				CD28E49820E11DB300C28897 /* AppDelegate.swift in Sources */,
+				CDB339AD211AE38800D41B36 /* ProjectViewController.swift in Sources */,
+				CDB339A9211AE38800D41B36 /* CodeViewController.swift in Sources */,
+				CDB339B0211AE38800D41B36 /* DebugViewController.swift in Sources */,
+				CDB339AE211AE38800D41B36 /* ProjectWindowController.swift in Sources */,
+				CDB339AA211AE38800D41B36 /* GraphViewController.swift in Sources */,
+				CDB339C4211AE39900D41B36 /* BreakpointViewController.swift in Sources */,
 				CDF42DC520E13B9600EC87B5 /* FIDocumentController.swift in Sources */,
-				CD9D75BC20FB65DB0004592E /* PreferencesWindowController.swift in Sources */,
+				CDB339C3211AE39900D41B36 /* SourceTreeViewController.swift in Sources */,
+				CDB339C7211AEB4E00D41B36 /* TabButton.swift in Sources */,
 				CD6BBBEF20F2141B00DE8073 /* GraphViewModel.swift in Sources */,
+				CDB339AC211AE38800D41B36 /* ProjectWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

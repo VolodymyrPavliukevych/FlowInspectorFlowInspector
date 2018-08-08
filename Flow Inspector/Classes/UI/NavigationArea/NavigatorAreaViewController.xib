@@ -8,7 +8,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NavigatorAreaViewController" customModule="Flow_Inspector" customModuleProvider="target">
             <connections>
+                <outlet property="breakpointButton" destination="ZUr-sq-FR6" id="EoW-VO-ZBc"/>
                 <outlet property="contentContainer" destination="2JG-JK-OZW" id="zd2-CT-JxS"/>
+                <outlet property="sourceTreeButton" destination="SXs-It-cEO" id="jot-iM-Rs7"/>
+                <outlet property="tensorInfoButton" destination="eaN-71-Baf" id="XHk-b0-qTI"/>
                 <outlet property="toolBarView" destination="yEQ-uA-HFP" id="upo-CM-nOI"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -22,29 +25,62 @@
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="yEQ-uA-HFP">
                     <rect key="frame" x="0.0" y="240" width="480" height="30"/>
                     <subviews>
-                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SXs-It-cEO">
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SXs-It-cEO" customClass="TabButton" customModule="Flow_Inspector" customModuleProvider="target">
                             <rect key="frame" x="20" y="0.0" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="folder" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="A8P-wz-C05">
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="folder" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="A8P-wz-C05">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="aTintColor">
+                                    <color key="value" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="aSelectedTintColor">
+                                    <color key="value" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="toolBarDidReceiveAction:" target="-2" id="d11-rf-bBk"/>
+                            </connections>
                         </button>
-                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-71-Baf">
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-71-Baf" customClass="TabButton" customModule="Flow_Inspector" customModuleProvider="target">
                             <rect key="frame" x="58" y="0.0" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="tensor" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="wnj-Um-hA1">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="aTintColor">
+                                    <color key="value" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="aSelectedTintColor">
+                                    <color key="value" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="toolBarDidReceiveAction:" target="-2" id="IYb-ij-Ujy"/>
+                            </connections>
                         </button>
-                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUr-sq-FR6">
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUr-sq-FR6" customClass="TabButton" customModule="Flow_Inspector" customModuleProvider="target">
                             <rect key="frame" x="96" y="0.0" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="breakpoint" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="vob-SZ-alt">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="aTintColor">
+                                    <color key="value" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="aSelectedTintColor">
+                                    <color key="value" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="toolBarDidReceiveAction:" target="-2" id="bFN-PH-m23"/>
+                            </connections>
                         </button>
                         <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Rcn-xu-kSD">
                             <rect key="frame" x="0.0" y="-2" width="480" height="5"/>

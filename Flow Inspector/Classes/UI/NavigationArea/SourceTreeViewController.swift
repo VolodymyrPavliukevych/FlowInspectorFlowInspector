@@ -48,3 +48,5 @@ class SourceTreeViewController: NSViewController {
     }
     
 }
+
+extension SourceTreeViewController: TabIdentifiable {}

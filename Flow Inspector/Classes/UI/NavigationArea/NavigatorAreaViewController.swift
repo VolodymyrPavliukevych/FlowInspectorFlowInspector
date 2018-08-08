@@ -8,9 +8,29 @@
 
 import Cocoa
 
+protocol TabIdentifiable: class {
+    var tabIdentifier: String { get }
+}
+
+extension TabIdentifiable {
+    public var tabIdentifier: String {
+        return String(describing: self)
+    }
+}
+
 class NavigatorAreaViewController: NSViewController {
     @IBOutlet weak var toolBarView: NSView!
     @IBOutlet weak var contentContainer: NSView!
+
+    @IBOutlet weak var sourceTreeButton: NSButton!
+    @IBOutlet weak var tensorInfoButton: NSButton!
+    @IBOutlet weak var breakpointButton: NSButton!
+    
+    
+    @IBAction func toolBarDidReceiveAction(_ sender: NSButton) {
+        
+    }
+    
     var infoAreaViewController: InfoAreaViewController!
 
     
