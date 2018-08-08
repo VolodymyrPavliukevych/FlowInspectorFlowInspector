@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14306.4"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,6 +12,7 @@
                 <outlet property="graphContainerView" destination="9Ea-xb-Fsu" id="wHE-kP-anU"/>
                 <outlet property="launchButton" destination="dtH-6o-UT4" id="BSW-AA-yl8"/>
                 <outlet property="saveAsEventButton" destination="UBv-jg-XHx" id="bcF-yX-djd"/>
+                <outlet property="timeProfilerButton" destination="g9K-DR-7kL" id="uZl-jT-W1f"/>
                 <outlet property="toolBarView" destination="ChG-mg-0Vr" id="OQt-Rl-9vQ"/>
                 <outlet property="view" destination="g4P-vJ-6dw" id="F3y-95-Peh"/>
             </connections>
@@ -62,17 +63,6 @@
                 <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ChG-mg-0Vr" userLabel="ToolBarView">
                     <rect key="frame" x="0.0" y="242" width="480" height="30"/>
                     <subviews>
-                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0iA-tK-fwp" userLabel="ExportButton">
-                            <rect key="frame" x="58" y="0.0" width="30" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="export-icon" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="yBf-Dw-Pf5">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="exportAsEvent:" target="-2" id="62p-bv-W1q"/>
-                            </connections>
-                        </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtH-6o-UT4">
                             <rect key="frame" x="20" y="0.0" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -84,8 +74,34 @@
                                 <action selector="launch:" target="-2" id="wha-ZP-aAa"/>
                             </connections>
                         </button>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g9K-DR-7kL">
+                            <rect key="frame" x="58" y="0.0" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="timer" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="6c0-m1-2xe">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="launchTimeProfiler:" target="-2" id="NAG-Fy-kbS"/>
+                            </connections>
+                        </button>
+                        <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="JgY-Z2-jZc">
+                            <rect key="frame" x="94" y="0.0" width="5" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </box>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0iA-tK-fwp" userLabel="ExportButton">
+                            <rect key="frame" x="111" y="0.0" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="export-icon" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="yBf-Dw-Pf5">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="exportAsEvent:" target="-2" id="62p-bv-W1q"/>
+                            </connections>
+                        </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UBv-jg-XHx">
-                            <rect key="frame" x="96" y="0.0" width="30" height="30"/>
+                            <rect key="frame" x="149" y="0.0" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="save-icon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="DEP-DC-mdp">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -121,8 +137,9 @@
     </objects>
     <resources>
         <image name="export-icon" width="16" height="16"/>
-        <image name="graph_empty" width="175" height="175"/>
+        <image name="graph_empty" width="190" height="190"/>
         <image name="launch" width="16" height="16"/>
         <image name="save-icon" width="16" height="16"/>
+        <image name="timer" width="16" height="16"/>
     </resources>
 </document>

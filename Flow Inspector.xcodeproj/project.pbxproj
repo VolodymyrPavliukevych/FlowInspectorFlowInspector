@@ -64,6 +64,7 @@
 		CDB339C3211AE39900D41B36 /* SourceTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339B9211AE39900D41B36 /* SourceTreeViewController.swift */; };
 		CDB339C4211AE39900D41B36 /* BreakpointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339BA211AE39900D41B36 /* BreakpointViewController.swift */; };
 		CDB339C7211AEB4E00D41B36 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339C6211AEB4E00D41B36 /* TabButton.swift */; };
+		CDB339C9211B3FE100D41B36 /* GraphExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339C8211B3FE100D41B36 /* GraphExecutor.swift */; };
 		CDDFA64B20E2357900945622 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDDFA64920E2357900945622 /* Main.storyboard */; };
 		CDDFA66C20E2499700945622 /* monaco.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDDFA66B20E2499600945622 /* monaco.bundle */; };
 		CDF42DC520E13B9600EC87B5 /* FIDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF42DC420E13B9600EC87B5 /* FIDocumentController.swift */; };
@@ -154,6 +155,7 @@
 		CDB339B9211AE39900D41B36 /* SourceTreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceTreeViewController.swift; sourceTree = "<group>"; };
 		CDB339BA211AE39900D41B36 /* BreakpointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakpointViewController.swift; sourceTree = "<group>"; };
 		CDB339C6211AEB4E00D41B36 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
+		CDB339C8211B3FE100D41B36 /* GraphExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphExecutor.swift; sourceTree = "<group>"; };
 		CDDFA64A20E2357900945622 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDDFA66B20E2499600945622 /* monaco.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = monaco.bundle; sourceTree = "<group>"; };
 		CDF42DC420E13B9600EC87B5 /* FIDocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIDocumentController.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				CDA6E21F20F507D600F60152 /* GoogleReporter.swift */,
 				CD3C459420FCC63C0001119C /* Result.swift */,
 				CD0253012118660300DA63E3 /* Extension.swift */,
+				CDB339C8211B3FE100D41B36 /* GraphExecutor.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				CDB339C1211AE39900D41B36 /* InfoAreaViewController.swift in Sources */,
 				CDA6E22020F507D600F60152 /* GoogleReporter.swift in Sources */,
 				CD11D76320EA99F20024D493 /* Processor.swift in Sources */,
+				CDB339C9211B3FE100D41B36 /* GraphExecutor.swift in Sources */,
 				CDB3399C211AE38800D41B36 /* PreferencesWindowController.swift in Sources */,
 				CD28E4A020E1249200C28897 /* SourceTreeController.swift in Sources */,
 				CD3C459520FCC63C0001119C /* Result.swift in Sources */,

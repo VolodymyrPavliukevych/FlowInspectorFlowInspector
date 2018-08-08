@@ -44,8 +44,7 @@ class TabButton: NSButton {
             super.draw(dirtyRect)
             return
         }
-        
-        
+
         if let backgroundColor = backgroundColor {
             backgroundColor.setFill()
             dirtyRect.fill()

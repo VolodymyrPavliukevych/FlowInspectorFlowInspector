@@ -108,6 +108,11 @@ class FIDocument: NSDocument {
         return Processor(output: self)
     }()
     
+    
+    lazy var graphExecutorInput: GraphExecutorInput = {
+        return GraphExecutor(output: self)
+    }()
+    
     var projectWindowControllerInput: ProjectWindowControllerInput? {
         get {
             let inputs = self.windowControllers.filter { $0 is ProjectWindowControllerInput }
@@ -329,7 +334,7 @@ extension FIDocument: ProjectWindowControllerOutput {
 }
 
 extension FIDocument: GraphViewOutput {
-    func launch(kind: GraphModel.Kind) {
+    func launchGraphExecution(kind: GraphModel.Kind) {
         if kind == .main {
             guard let mainGraph = self.model.mainGraph else {
                 return
@@ -337,6 +342,10 @@ extension FIDocument: GraphViewOutput {
             Swift.print(mainGraph)
             /*processorInput.launchMainGraphExecution()*/
         }
+    }
+    
+    func launchTimeProfiler(kind: GraphModel.Kind) {
+        
     }
     
     func saveGraph(kind: GraphModel.Kind) {
@@ -390,4 +399,8 @@ extension FIDocument: PreferencesOutput {
     func update(_ preferences: Preferences) {
         self.model.preferences = preferences
     }
+}
+
+extension FIDocument: GraphExecutorOutput {
+    
 }
