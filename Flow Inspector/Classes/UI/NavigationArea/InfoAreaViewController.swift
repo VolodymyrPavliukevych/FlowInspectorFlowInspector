@@ -9,19 +9,20 @@
 import Cocoa
 
 class InfoAreaViewController: NSTabViewController {
-    var sourceTreeViewController: SourceTreeViewController!
-    var tensorInfoViewController: TensorInfoViewController!
-    var breakpointViewController: BreakpointViewController!
+    private (set) var sourceTreeViewController: SourceTreeViewController!
+    private (set) var tensorInfoViewController: TensorInfoViewController!
+    private (set) var breakpointViewController: BreakpointViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabStyle = .unspecified
+        self.transitionOptions = .allowUserInteraction
         sourceTreeViewController = addTab()
         tensorInfoViewController = addTab()
         breakpointViewController = addTab()
     }
     
-    func addTab<T: NSViewController>(identifier: String? = nil, label: String? = nil, imageName: String? = nil) -> T {
+    private func addTab<T: NSViewController>(identifier: String? = nil, label: String? = nil, imageName: String? = nil) -> T {
         let name = T.className()
         let viewController = T(nibName: name, bundle: nil)
         
@@ -35,6 +36,7 @@ class InfoAreaViewController: NSTabViewController {
         if let label = label {
             tabViewItem.label = label
         }
+        
         if let imageName = imageName {
             tabViewItem.image = NSImage(named: imageName)
         }
@@ -43,4 +45,16 @@ class InfoAreaViewController: NSTabViewController {
         return viewController
     }
 
+}
+
+extension InfoAreaViewController: TabInteractable {
+    func openTab(identifier: String) {
+        let fitted = self.tabViewItems.filter { (item) -> Bool in
+            if let itemIdentifier = item.identifier as? String {
+                return itemIdentifier == identifier
+            }
+            return false
+        }
+        self.tabView.selectTabViewItem(fitted.first)
+    }
 }

@@ -766,16 +766,8 @@
                                 <constraint firstAttribute="width" constant="400" id="y4R-aO-aAZ"/>
                             </constraints>
                         </customView>
-                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EAb-QQ-VLt">
-                            <rect key="frame" x="66" y="1" width="38" height="38"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="flow-icon" imagePosition="only" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="fsS-6r-bSU">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                        </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7BH-ew-T6T">
-                            <rect key="frame" x="112" y="1" width="38" height="38"/>
+                            <rect key="frame" x="66" y="1" width="38" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="telescope" imagePosition="only" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="HVs-Tk-iYD">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -783,17 +775,6 @@
                             </buttonCell>
                             <connections>
                                 <action selector="extractFunctionGraph:" target="jGA-0Y-lOj" id="fqn-Fa-OBo"/>
-                            </connections>
-                        </button>
-                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ote-9i-ZYA">
-                            <rect key="frame" x="154" y="1" width="38" height="38"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="settings-icon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="POe-SK-NqL">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="showPreferences:" target="jGA-0Y-lOj" id="wg8-Fu-3j8"/>
                             </connections>
                         </button>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ttf-bU-wMq">
@@ -804,6 +785,17 @@
                             </constraints>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="alpha-mark" id="gnL-UF-Mgr"/>
                         </imageView>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ote-9i-ZYA">
+                            <rect key="frame" x="112" y="1" width="38" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="settings-icon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="POe-SK-NqL">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="showPreferences:" target="jGA-0Y-lOj" id="wg8-Fu-3j8"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="ttf-bU-wMq" secondAttribute="trailing" id="R78-0f-Q9s"/>
@@ -888,7 +880,6 @@
     </scenes>
     <resources>
         <image name="alpha-mark" width="60" height="40"/>
-        <image name="flow-icon" width="16" height="16"/>
         <image name="rocket" width="16" height="16"/>
         <image name="settings-icon" width="16" height="16"/>
         <image name="telescope" width="16" height="16"/>

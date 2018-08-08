@@ -324,8 +324,6 @@
 		CDB33984211AE38800D41B36 /* NavigationArea */ = {
 			isa = PBXGroup;
 			children = (
-				CDB339BA211AE39900D41B36 /* BreakpointViewController.swift */,
-				CDB339B4211AE39900D41B36 /* BreakpointViewController.xib */,
 				CDB339B7211AE39900D41B36 /* InfoAreaViewController.swift */,
 				CDB339B5211AE39900D41B36 /* InfoAreaViewController.xib */,
 				CDB339B6211AE39900D41B36 /* NavigatorAreaViewController.swift */,
@@ -334,6 +332,8 @@
 				CDB339B8211AE39900D41B36 /* SourceTreeViewController.xib */,
 				CDB339B1211AE39900D41B36 /* TensorInfoViewController.swift */,
 				CDB339B3211AE39900D41B36 /* TensorInfoViewController.xib */,
+				CDB339BA211AE39900D41B36 /* BreakpointViewController.swift */,
+				CDB339B4211AE39900D41B36 /* BreakpointViewController.xib */,
 			);
 			path = NavigationArea;
 			sourceTree = "<group>";

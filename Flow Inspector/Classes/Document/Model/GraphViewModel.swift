@@ -42,7 +42,7 @@ struct NodeValueViewModel: Encodable {
     init(label: String, type: NodeTypeViewModel) {
         self.label = label
         height = 30
-        width = ((label.count * 15) > 375) ? 375 : label.count * 15
+        width = ((label.count * 15) > 120) ? 120 : label.count * 15
         self.viewModelType = type
     }
 }

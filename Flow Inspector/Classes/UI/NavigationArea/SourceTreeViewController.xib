@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14306.4"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,11 +17,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="665" height="272"/>
+            <rect key="frame" x="0.0" y="0.0" width="362" height="250"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dBE-tI-7nN">
-                    <rect key="frame" x="20" y="220" width="625" height="32"/>
+                    <rect key="frame" x="20" y="198" width="322" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="WjZ-57-a22"/>
                     </constraints>
@@ -34,7 +34,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mZD-3y-PHa">
-                    <rect key="frame" x="20" y="180" width="625" height="32"/>
+                    <rect key="frame" x="20" y="158" width="322" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="4rL-ME-Ogd"/>
                     </constraints>
@@ -47,7 +47,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Ff-JI-6mT">
-                    <rect key="frame" x="20" y="140" width="625" height="32"/>
+                    <rect key="frame" x="20" y="118" width="322" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="ZGo-Jh-vTv"/>
                     </constraints>
@@ -71,7 +71,7 @@
                 <constraint firstAttribute="trailing" secondItem="2Ff-JI-6mT" secondAttribute="trailing" constant="20" id="WWB-p3-VAo"/>
                 <constraint firstItem="dBE-tI-7nN" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="m5g-GM-f1R"/>
             </constraints>
-            <point key="canvasLocation" x="-1.5" y="168"/>
+            <point key="canvasLocation" x="-153" y="157"/>
         </customView>
     </objects>
     <resources>

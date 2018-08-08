@@ -25,9 +25,10 @@ class ProjectViewController: NSViewController {
         
     internal func inject(documentInteraction: FIDocumentInteraction) {
         self.documentInteraction = documentInteraction
-        //self.sourceTreeViewController.output = documentInteraction
-        self.codeViewController.output = documentInteraction
-        self.graphViewController.output = documentInteraction
+        
+        navigatorAreaViewController.sourceTreeViewController.output = documentInteraction
+        codeViewController.output = documentInteraction
+        graphViewController.output = documentInteraction
         documentInteraction.injectCodeViewInput(codeViewController)
         documentInteraction.injectDebugViewInput(debugViewController)
         documentInteraction.injectGraphViewInput(graphViewController)

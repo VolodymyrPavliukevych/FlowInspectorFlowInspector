@@ -18,6 +18,10 @@ extension TabIdentifiable {
     }
 }
 
+protocol TabInteractable {
+    func openTab(identifier: String)
+}
+
 class NavigatorAreaViewController: NSViewController {
     @IBOutlet weak var toolBarView: NSView!
     @IBOutlet weak var contentContainer: NSView!
@@ -28,11 +32,27 @@ class NavigatorAreaViewController: NSViewController {
     
     
     @IBAction func toolBarDidReceiveAction(_ sender: NSButton) {
+        sourceTreeButton.state = .off
+        tensorInfoButton.state = .off
+        breakpointButton.state = .off
         
+        sender.state = .on
+        if let tabIdentifier = sender.identifier {
+            infoAreaViewController.openTab(identifier: tabIdentifier.rawValue)
+        }
     }
     
-    var infoAreaViewController: InfoAreaViewController!
+    private (set) var infoAreaViewController: InfoAreaViewController!
 
+    public var sourceTreeViewController: SourceTreeViewController {
+        return infoAreaViewController.sourceTreeViewController
+    }
+    public var tensorInfoViewController: TensorInfoViewController {
+        return infoAreaViewController.tensorInfoViewController
+    }
+    public var breakpointViewController: BreakpointViewController {
+        return infoAreaViewController.breakpointViewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
