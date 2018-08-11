@@ -44,8 +44,10 @@ protocol ProcessorOutput {
 }
 
 struct MetaGraph {
-    static let outputKey = "tfc_output_0_main.tf"
-    static let inputKey = "tfc_input_0_main.tf"
+    static let numberKey = "%number%"
+    static let outputKey = "tfc_output_\(numberKey)_main.tf"
+    static let inputKey = "tfc_input_\(numberKey)_main.tf"
+    
     let program: Data
     let entryFunctionBaseName: String
     let tensorArgument: [Tensorflow_TensorProto]

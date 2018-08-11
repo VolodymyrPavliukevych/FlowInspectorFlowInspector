@@ -52,7 +52,19 @@ class GraphExecutor {
         options.traceLevel = .hardwareTrace
         do {
             let session = try buildSession(for: task.scope.graph)
+            var options = Tensorflow_RunOptions()
+            options.traceLevel = .fullTrace
             
+            let inputNames = task.inputs.enumerated().map { MetaGraph.inputKey.replacingOccurrences(of: MetaGraph.numberKey, with: "\($0.offset)")}
+            let inputs = try task.inputs.map  { try Tensor(proto: $0) }
+            
+            
+            let result: (outputs: [Tensor], runMetadata: Tensorflow_RunMetadata?) = try session.run(runOptions: options,
+                                                                                                inputNames: inputNames,
+                                                                                                inputs: inputs,
+                                                                                                outputNames: ["tfc_output_0_main.tf"],
+                                                                                                targetOperationsNames: [])
+            print(result.runMetadata!)
         } catch {
             
         }
