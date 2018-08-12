@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flow Inspector Profiler Graph</title>
+        <style>
+            html, body { height: 100%; width: 100%; margin: 0;}
+            #sheet {
+                background: #3E9DDD;
+                padding: 20px;
+            }
+            #drawing {
+                background: #4CA3DF;
+            }
+        </style>
+        <script src="svg.js"></script>
+    </head>
+    <body>
+        <div id="sheet">
+            <div id="drawing"></div>
+        </div>
+    </body>
+    <script>
+
+		var json = "{\"profiler\": { \"environment\": {\"cpu\": [{\"title\" : \"cpu0\"}], \"ram\": []}, \"tasks\": []}}";
+
+		drawGraph(json);
+	 function loadContent(content) {
+	      drawGraph(atob(content));
+	 }
+  
+	 function drawGraph(json) {
+		 //Create a new directed graph
+		 var profiler_data = JSON.parse(json);	
+	  	 var sheetWidth = 1024
+	  	 var sheetHeight = 1024
+		 console.log(profiler_data);
+	  	 var draw = SVG('drawing').size(sheetWidth, sheetHeight)
+            document.getElementById("sheet").style.width = sheetWidth + "px";
+            document.getElementById("sheet").style.height = sheetHeight + "px";
+            document.getElementById("drawing").style.width = sheetWidth + "px";
+            document.getElementById("drawing").style.height = sheetHeight + "px";
+	  }
+	
+	function drawEdge(edge, draw) {
+        var strokeColor = '#fff'
+        var viewModelType = edge.viewModelType
+        if (viewModelType == 'controlDependencies') {
+            strokeColor = '#3333aa'
+        }
+		var points = edge.points
+		var polyline = draw.polyline(edge.points)
+		polyline.attr({ fill: 'none', 'fill-opacity': 0.5, stroke: strokeColor, 'stroke-width': 1.5})
+        polyline.marker('start', 14, 14, function(add) {
+            add.polyline([[14, 5], [14, 9], [7, 7]])
+            this.fill(strokeColor)
+        })
+	}
+	
+	function drawNode(node, identifier, draw) {
+		var nodeWidth = node.width;
+		var nodeHeight = node.height;
+		var nodeX = node.x-nodeWidth/2;
+		var nodeY = node.y-nodeHeight/2;
+		var nodeCenterX = node.x;
+		var nodeCenterY = node.y;
+		var rect = draw.rect(nodeWidth, nodeHeight).move(nodeX, nodeY);
+		
+        var radius = 20;
+        if (node.viewModelType == "operation") {
+           radius = 10
+        } if (node.viewModelType == "arg") {
+            radius = 0
+        }
+        
+        rect.radius(radius);
+		addText(node.label, nodeX, nodeY, nodeWidth, nodeHeight, identifier, draw);
+        rect.attr({'nodeIdentifier' : identifier});
+        
+ 		 rect.attr({ fill: '#fff', 'fill-opacity': 0.2, stroke: '#fff', 'stroke-width': 1})
+	 	 rect.click(function() {			 
+			 this.animate(150).attr({ fill: '#fff', 'fill-opacity': 1.0 });
+			 this.animate(150).attr({ fill: '#eee', 'fill-opacity': 0.2 });
+			 didSelectNode(this.attr('nodeIdentifier'));
+	 	 })
+	}
+	
+	function addText(string, x, y, width, height, nodeIdentifier, draw) {
+		var maxLength = 16;
+		var fontSize = 14;
+		
+		var trimmedString = string.length > maxLength ? string.substring(0, maxLength - 3) + "..." :  string;
+		var text = draw.text(function(add) {
+			add.tspan(trimmedString).fill('#fff');
+		})
+		
+		text.attr({'nodeIdentifier' : nodeIdentifier});
+		
+		text.click(function() {
+			didSelectNode(this.attr('nodeIdentifier'));
+		})
+		
+		text.font({ family: 'Helvetica', size: fontSize});
+		var length = text.length();
+		var margin = (width - length) / 2;
+		var marginY = (height - fontSize) / 2;
+		text.move(x + margin, y + marginY);	
+	}
+
+	function didSelectNode(identifier){
+        var body = { nodeIdentifier: identifier };
+        window.webkit.messageHandlers.onMouseDown.postMessage(body);
+	}
+    
+  </script>
+</html>
