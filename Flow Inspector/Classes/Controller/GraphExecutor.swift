@@ -15,7 +15,7 @@ enum GraphExecutorError: Error {
 }
 
 protocol GraphExecutorInput {
-    func launchTimeProfiler(for graph: MetaGraph, callback: @escaping ResultCompletion<Tensorflow_RunMetadata>) throws -> GraphExecutorTask.TaskIdentifier
+    func launchTimeProfiler(for scope: Scope, entryFunctionBaseName: String, tensorArgument: [Tensorflow_TensorProto], callback: @escaping ResultCompletion<Tensorflow_RunMetadata>) -> GraphExecutorTask.TaskIdentifier
 }
 
 protocol GraphExecutorOutput {
@@ -66,7 +66,7 @@ class GraphExecutor {
                                                                                                 targetOperationsNames: [])
             print(result.runMetadata!)
         } catch {
-            
+            print(error)
         }
     }
     
@@ -78,12 +78,9 @@ class GraphExecutor {
 }
 
 extension GraphExecutor: GraphExecutorInput {
-    func launchTimeProfiler(for graph: MetaGraph, callback: @escaping ResultCompletion<Tensorflow_RunMetadata>) throws -> GraphExecutorTask.TaskIdentifier {
+    func launchTimeProfiler(for scope: Scope, entryFunctionBaseName: String, tensorArgument: [Tensorflow_TensorProto], callback: @escaping ResultCompletion<Tensorflow_RunMetadata>) -> GraphExecutorTask.TaskIdentifier {
         
-        let scope = Scope()
-        try scope.graph.import(data: graph.program, prefix: "")
-        
-        let task = GraphExecutorTask(scope: scope, inputs: graph.tensorArgument, entryFunctionBaseName: graph.entryFunctionBaseName)
+        let task = GraphExecutorTask(scope: scope, inputs: tensorArgument, entryFunctionBaseName: entryFunctionBaseName)
         tasks.append(task)
         queue.async {
             self.launchTimeProfiler(for: task, callback: callback)

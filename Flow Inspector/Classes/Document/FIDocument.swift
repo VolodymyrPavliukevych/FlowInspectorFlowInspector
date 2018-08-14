@@ -79,14 +79,15 @@ struct GraphModel {
     }
     var graphData: Data
     var scope: Scope
-    var graph: Graph
     var graphDef: Tensorflow_GraphDef
     var kind: Kind
     var viewModel: GraphViewModel
+    var entryFunctionBaseName: String? = nil
+    var tensorArgument: [Tensorflow_TensorProto]
 }
 
 struct FIDocumentModel { /*SWIFT_TENSORFLOW_ENABLE_DEBUG_LOGGING=true,*/
-    var preferences: Preferences = Preferences(argument: "4.54,0.001", environment: "PATH=/Library/Developer/Toolchains/swift-latest/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin")
+    var preferences: Preferences = Preferences(argument: "4.54,0.001", environment: "SWIFT_TENSORFLOW_ENABLE_DEBUG_LOGGING=true,PATH=/Library/Developer/Toolchains/swift-latest/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin")
     var sourceFilePath: String?
     var binFilePath: String?
     var dSYMFilePath: String?
@@ -177,7 +178,8 @@ class FIDocument: NSDocument {
         projectWindowControllerInput?.progressText("Ready, now you can read graph.")
     }
     
-    func graphDidFound(_ data: Data, kind: GraphModel.Kind) {
+    func graphDidFound(_ data: Data, kind: GraphModel.Kind, entryFunctionBaseName: String? = nil, tensorArgument: [Tensorflow_TensorProto]? = nil) {
+
         let scope = Scope()
 
         do {
@@ -188,10 +190,11 @@ class FIDocument: NSDocument {
             self.graphViewInput?.shouwGraph(graph: try graphViewModel.serialize(), for: kind)
             let graphModel = GraphModel(graphData: data,
                                         scope: scope,
-                                        graph: scope.graph,
                                         graphDef: graphDef,
                                         kind: kind,
-                                        viewModel: graphViewModel)
+                                        viewModel: graphViewModel,
+                                        entryFunctionBaseName: entryFunctionBaseName,
+                                        tensorArgument: tensorArgument ?? [])
             switch kind {
             case .function:
                 self.model.functionGraph = graphModel
@@ -284,7 +287,10 @@ extension FIDocument: ProjectWindowControllerOutput {
                 }
                 
                 result.onPositive {
-                    self.graphDidFound($0.program, kind: .main)
+                    self.graphDidFound($0.program,
+                                       kind: .main,
+                                       entryFunctionBaseName: $0.entryFunctionBaseName,
+                                       tensorArgument: $0.tensorArgument)
                     finishCallback()
                 }
             })
@@ -345,7 +351,19 @@ extension FIDocument: GraphViewOutput {
     }
     
     func launchTimeProfiler(kind: GraphModel.Kind) {
-        
+        if kind == .main {
+            guard let mainGraph = self.model.mainGraph else { return }
+            guard let entryFunctionBaseName = self.model.mainGraph?.entryFunctionBaseName else { return }
+            guard let tensorArgument = self.model.mainGraph?.tensorArgument else { return }
+            
+            
+            let identifier = self.graphExecutorInput.launchTimeProfiler(for: mainGraph.scope, entryFunctionBaseName: entryFunctionBaseName, tensorArgument: tensorArgument) { (result: Result<Tensorflow_RunMetadata>) in
+                result.onPositive { Swift.print($0) }
+                result.onNegative { Swift.print($0) }
+            }
+            Swift.print("Launch task: \(identifier)")
+            
+        }
     }
     
     func saveGraph(kind: GraphModel.Kind) {
@@ -357,7 +375,7 @@ extension FIDocument: GraphViewOutput {
         case .main:
             graphMode = self.model.mainGraph
         }
-        guard let graph = graphMode?.graph else {
+        guard let graph = graphMode?.scope.graph else {
             return
         }
         
@@ -378,7 +396,7 @@ extension FIDocument: GraphViewOutput {
             graphMode = self.model.mainGraph
         }
         
-        guard let graph = graphMode?.graph else {
+        guard let graph = graphMode?.scope.graph else {
             Swift.print("Graph not found in model.")
             return
         }

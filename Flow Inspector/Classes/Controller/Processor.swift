@@ -180,7 +180,7 @@ extension Processor: ProcessorInput {
             
             var tensor = Tensorflow_TensorProto()
             tensor.dtype = type
-            tensor.tensorContent = data
+            tensor.floatVal = try data.unsafeCollectionCast()
             var tensorShape = Tensorflow_TensorShapeProto()
             tensorShape.dim = shape.map({ (value) -> Tensorflow_TensorShapeProto.Dim in
                 var dim = Tensorflow_TensorShapeProto.Dim()
@@ -200,7 +200,6 @@ extension Processor: ProcessorInput {
         let rdxPointerValue = try lookingForFirstPointerValue("rdx", at: registers)
         let rcxPointerValue = try lookingForFirstPointerValue("rcx", at: registers) //tensorArgumentAddress
         let r8PointerValue = try lookingForFirstPointerValue("r8", at: registers) //tensorArgumentCount
-
         let input = try extractTensors(tensorArgumentAddress: rcxPointerValue,
                                        tensorArgumentCount: r8PointerValue,
                                        at: process)
@@ -432,7 +431,6 @@ extension Processor: ProcessorInput {
             
             defer {
                 lldb.delete(target)
-                LLDBGlobals.terminate()
             }
             
             let _ = createBreakpoint(target)

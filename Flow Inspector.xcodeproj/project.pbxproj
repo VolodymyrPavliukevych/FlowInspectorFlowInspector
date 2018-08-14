@@ -18,6 +18,7 @@
 		CD28E49820E11DB300C28897 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28E49320E11DB300C28897 /* AppDelegate.swift */; };
 		CD28E49920E11DB300C28897 /* FIDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28E49520E11DB300C28897 /* FIDocument.swift */; };
 		CD28E4A020E1249200C28897 /* SourceTreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28E49F20E1249200C28897 /* SourceTreeController.swift */; };
+		CD34ABDB21218C150012E502 /* profiler.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD34ABDA21218C150012E502 /* profiler.bundle */; };
 		CD3C459520FCC63C0001119C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3C459420FCC63C0001119C /* Result.swift */; };
 		CD6BBBEF20F2141B00DE8073 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6BBBEE20F2141B00DE8073 /* GraphViewModel.swift */; };
 		CDA6E22020F507D600F60152 /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA6E21F20F507D600F60152 /* GoogleReporter.swift */; };
@@ -116,6 +117,7 @@
 		CD28E49320E11DB300C28897 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD28E49520E11DB300C28897 /* FIDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIDocument.swift; sourceTree = "<group>"; };
 		CD28E49F20E1249200C28897 /* SourceTreeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTreeController.swift; sourceTree = "<group>"; };
+		CD34ABDA21218C150012E502 /* profiler.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = profiler.bundle; sourceTree = "<group>"; };
 		CD3C459420FCC63C0001119C /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		CD6BBBEE20F2141B00DE8073 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		CDA6E21F20F507D600F60152 /* GoogleReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleReporter.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		CD28E48F20E11BAD00C28897 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD34ABDA21218C150012E502 /* profiler.bundle */,
 				CDA7CBC920EFE6D90088FE94 /* graph.bundle */,
 				CDAB847B20E632C600E334B5 /* dSYM_Icon.icns */,
 				CDAB847C20E632C600E334B5 /* processorusagepoint.icns */,
@@ -493,6 +496,7 @@
 				CDAB847D20E632C600E334B5 /* dSYM_Icon.icns in Resources */,
 				CDAB847E20E632C600E334B5 /* processorusagepoint.icns in Resources */,
 				CD28E49120E11BC100C28897 /* flow.icns in Resources */,
+				CD34ABDB21218C150012E502 /* profiler.bundle in Resources */,
 				CDB339A8211AE38800D41B36 /* CodeViewController.xib in Resources */,
 				CDB339AB211AE38800D41B36 /* GraphViewController.xib in Resources */,
 				CDB339BC211AE39900D41B36 /* NavigatorAreaViewController.xib in Resources */,
