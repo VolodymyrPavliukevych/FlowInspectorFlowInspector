@@ -476,6 +476,7 @@ extension Processor: ProcessorInput {
                                 return
                             }
                         }
+                        continue
                     }
                     print("Not used event: ", event.description(), event.type, " Process state: ", process.state)
                 }
