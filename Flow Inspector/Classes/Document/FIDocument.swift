@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import TensorFlowKit
 import Proto
 
 public enum FIDocumentError: Error {
@@ -78,7 +77,6 @@ struct GraphModel {
         case main
     }
     var graphData: Data
-    var scope: Scope
     var graphDef: Tensorflow_GraphDef
     var kind: Kind
     var viewModel: GraphViewModel
@@ -180,33 +178,32 @@ class FIDocument: NSDocument {
     
     func graphDidFound(_ data: Data, kind: GraphModel.Kind, entryFunctionBaseName: String? = nil, tensorArgument: [Tensorflow_TensorProto]? = nil) {
 
-        let scope = Scope()
 
-        do {
-            try scope.graph.import(data: data, prefix: "")
-            let graphDef = try Tensorflow_GraphDef(serializedData: data)
-            
-            let graphViewModel = GraphViewModel(from: graphDef)
-            self.graphViewInput?.shouwGraph(graph: try graphViewModel.serialize(), for: kind)
-            let graphModel = GraphModel(graphData: data,
-                                        scope: scope,
-                                        graphDef: graphDef,
-                                        kind: kind,
-                                        viewModel: graphViewModel,
-                                        entryFunctionBaseName: entryFunctionBaseName,
-                                        tensorArgument: tensorArgument ?? [])
-            switch kind {
-            case .function:
-                self.model.functionGraph = graphModel
-            case .main:
-                self.model.mainGraph = graphModel
-            }
-
-
-        } catch {
-            Swift.print(error.localizedDescription)
-            return
-        }
+//        do {
+//            try scope.graph.import(data: data, prefix: "")
+//            let graphDef = try Tensorflow_GraphDef(serializedData: data)
+//            
+//            let graphViewModel = GraphViewModel(from: graphDef)
+//            self.graphViewInput?.shouwGraph(graph: try graphViewModel.serialize(), for: kind)
+//            let graphModel = GraphModel(graphData: data,
+//                                        scope: scope,
+//                                        graphDef: graphDef,
+//                                        kind: kind,
+//                                        viewModel: graphViewModel,
+//                                        entryFunctionBaseName: entryFunctionBaseName,
+//                                        tensorArgument: tensorArgument ?? [])
+//            switch kind {
+//            case .function:
+//                self.model.functionGraph = graphModel
+//            case .main:
+//                self.model.mainGraph = graphModel
+//            }
+//
+//
+//        } catch {
+//            Swift.print(error.localizedDescription)
+//            return
+//        }
     }
 }
 
@@ -263,6 +260,10 @@ extension FIDocument: ProcessorOutput {
 }
 
 extension FIDocument: ProjectWindowControllerOutput {
+    func launchProfiller() {
+        
+    }
+    
     func extractMainGraph() {
         projectWindowControllerInput?.progressIndicator(startAnimation: true)
         projectWindowControllerInput?.progressText("Looking for graph in program...")
@@ -350,40 +351,24 @@ extension FIDocument: GraphViewOutput {
         }
     }
     
-    func launchTimeProfiler(kind: GraphModel.Kind) {
-        if kind == .main {
-            guard let mainGraph = self.model.mainGraph else { return }
-            guard let entryFunctionBaseName = self.model.mainGraph?.entryFunctionBaseName else { return }
-            guard let tensorArgument = self.model.mainGraph?.tensorArgument else { return }
-            
-            
-            let identifier = self.graphExecutorInput.launchTimeProfiler(for: mainGraph.scope, entryFunctionBaseName: entryFunctionBaseName, tensorArgument: tensorArgument) { (result: Result<Tensorflow_RunMetadata>) in
-                result.onPositive { Swift.print($0) }
-                result.onNegative { Swift.print($0) }
-            }
-            Swift.print("Launch task: \(identifier)")
-            
-        }
-    }
-    
     func saveGraph(kind: GraphModel.Kind) {
-        var graphMode: GraphModel? = nil
-        
-        switch kind {
-        case .function:
-            graphMode = self.model.functionGraph
-        case .main:
-            graphMode = self.model.mainGraph
-        }
-        guard let graph = graphMode?.scope.graph else {
-            return
-        }
-        
-        let message = "Please, select folder and name to save graph in 'pb' or 'pbtxt' format."
-        self.projectWindowControllerInput?.save("Graph", allowedFileTypes: ["pb", "pbtxt"], message: message, callback: { (url) in
-            let isTextFormat = url.pathExtension == "pbtxt"
-            try? graph.save(at: url, asText: isTextFormat)
-        })
+//        var graphMode: GraphModel? = nil
+//        
+//        switch kind {
+//        case .function:
+//            graphMode = self.model.functionGraph
+//        case .main:
+//            graphMode = self.model.mainGraph
+//        }
+//        guard let graph = graphMode?.scope.graph else {
+//            return
+//        }
+//        
+//        let message = "Please, select folder and name to save graph in 'pb' or 'pbtxt' format."
+//        self.projectWindowControllerInput?.save("Graph", allowedFileTypes: ["pb", "pbtxt"], message: message, callback: { (url) in
+//            let isTextFormat = url.pathExtension == "pbtxt"
+//            try? graph.save(at: url, asText: isTextFormat)
+//        })
     }
     
     func exportGraphAsEvent(kind: GraphModel.Kind) {
@@ -396,12 +381,13 @@ extension FIDocument: GraphViewOutput {
             graphMode = self.model.mainGraph
         }
         
-        guard let graph = graphMode?.scope.graph else {
-            Swift.print("Graph not found in model.")
-            return
-        }
+//        guard let graph = graphMode?.scope.graph else {
+//            Swift.print("Graph not found in model.")
+//            return
+//        }
 
         let message = "Please, select folder and identifier to save graph in TensorBoard format."
+        let graph = Tensorflow_TensorProto()
         self.projectWindowControllerInput?.save("graph", allowedFileTypes: ["event"], message: message, callback: { (url) in
             let folderURL = URL(string: url.deletingLastPathComponent().path + "/")!
             do {

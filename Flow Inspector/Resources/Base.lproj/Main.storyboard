@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14306.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -710,6 +710,7 @@
                         <outlet property="accessoryView" destination="Jfg-A6-PGY" id="k2i-Mf-nvM"/>
                         <outlet property="extractFunctionGraphButton" destination="7BH-ew-T6T" id="8iY-wc-zYb"/>
                         <outlet property="extractMainGraphButton" destination="dMh-Jt-THc" id="bYO-uS-F2z"/>
+                        <outlet property="profillerButton" destination="RqX-9w-jdj" id="fjz-c9-2Q0"/>
                         <outlet property="progressIndicator" destination="8bG-ra-cb9" id="3rr-bZ-IgK"/>
                         <outlet property="progressTextField" destination="4Ma-jZ-yGp" id="Gjv-Ja-1Mf"/>
                         <outlet property="showPreferencesButton" destination="ote-9i-ZYA" id="LAO-Rq-f0y"/>
@@ -719,7 +720,7 @@
                 </windowController>
                 <customObject id="6f7-a7-6o1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <customView id="Jfg-A6-PGY" userLabel="AccessoryView">
-                    <rect key="frame" x="0.0" y="0.0" width="800" height="40"/>
+                    <rect key="frame" x="0.0" y="0.0" width="973" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dMh-Jt-THc">
@@ -734,7 +735,7 @@
                             </connections>
                         </button>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="TdT-Gp-TIV" userLabel="CenteredView">
-                            <rect key="frame" x="200" y="0.0" width="400" height="40"/>
+                            <rect key="frame" x="287" y="0.0" width="400" height="40"/>
                             <subviews>
                                 <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="LJN-we-2yq">
                                     <rect key="frame" x="2" y="7" width="396" height="26"/>
@@ -778,7 +779,7 @@
                             </connections>
                         </button>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ttf-bU-wMq">
-                            <rect key="frame" x="740" y="0.0" width="60" height="40"/>
+                            <rect key="frame" x="913" y="0.0" width="60" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="IKS-Dg-3es"/>
                                 <constraint firstAttribute="height" constant="40" id="Zw7-iO-Q8w"/>
@@ -794,6 +795,17 @@
                             </buttonCell>
                             <connections>
                                 <action selector="showPreferences:" target="jGA-0Y-lOj" id="wg8-Fu-3j8"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RqX-9w-jdj">
+                            <rect key="frame" x="158" y="1" width="38" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="timer" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="J33-79-btB">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="launchProfiller:" target="jGA-0Y-lOj" id="jdk-V9-pYq"/>
                             </connections>
                         </button>
                     </subviews>
@@ -883,5 +895,6 @@
         <image name="rocket" width="16" height="16"/>
         <image name="settings-icon" width="16" height="16"/>
         <image name="telescope" width="16" height="16"/>
+        <image name="timer" width="16" height="16"/>
     </resources>
 </document>

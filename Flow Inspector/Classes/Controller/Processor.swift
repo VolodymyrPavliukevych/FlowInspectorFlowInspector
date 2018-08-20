@@ -9,7 +9,6 @@
 import Foundation
 import LLDBKit
 import Proto
-import TensorFlowKit
 
 typealias DiscoverCallback = (_ lldb: LLDBDebugger, _ process: LLDBProcess, _ target: LLDBTarget) -> Bool
 typealias CreateBreakpointCallback = (_ target: LLDBTarget) -> [LLDBBreakpoint]

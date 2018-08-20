@@ -30,6 +30,7 @@ protocol ProjectWindowControllerOutput {
     func extractMainGraph()
     func extractFunctionGraph()
     func shouldOpenPreferences()
+    func launchProfiller()
 }
 
 class ProjectWindowController: NSWindowController {
@@ -37,6 +38,7 @@ class ProjectWindowController: NSWindowController {
     @IBOutlet weak var extractMainGraphButton: NSButton!
     @IBOutlet weak var extractFunctionGraphButton: NSButton!
     @IBOutlet weak var showPreferencesButton: NSButton!
+    @IBOutlet weak var profillerButton: NSButton!
     @IBOutlet weak var accessoryView: NSView!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     @IBOutlet weak var progressTextField: NSTextField!
@@ -84,6 +86,10 @@ class ProjectWindowController: NSWindowController {
     
     @IBAction func showPreferences(_ sender: Any) {
         self.output?.shouldOpenPreferences()
+    }
+    
+    @IBAction func launchProfiller(_ sender: Any) {
+        self.output?.launchProfiller()
     }
 }
 

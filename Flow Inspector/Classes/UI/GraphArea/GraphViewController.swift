@@ -19,14 +19,12 @@ protocol GraphViewOutput {
     func saveGraph(kind: GraphModel.Kind)
     func exportGraphAsEvent(kind: GraphModel.Kind)
     func launchGraphExecution(kind: GraphModel.Kind)
-    func launchTimeProfiler(kind: GraphModel.Kind)
 }
 
 class GraphViewController: NSViewController {
     @IBOutlet weak var toolBarView: NSView!
     @IBOutlet weak var saveAsEventButton: NSButton!
     @IBOutlet weak var launchButton: NSButton!
-    @IBOutlet weak var timeProfilerButton: NSButton!
     @IBOutlet weak var exportButton: NSButton!
     @IBOutlet weak var graphContainerView: NSView!
     
@@ -45,10 +43,6 @@ class GraphViewController: NSViewController {
     
     @IBAction func launch(_ sender: Any?) {
         output?.launchGraphExecution(kind: graphKind)
-    }
-    
-    @IBAction func launchTimeProfiler(_ sender: Any?) {
-        output?.launchTimeProfiler(kind: graphKind)
     }
     
     var output: GraphViewOutput?

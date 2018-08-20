@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import TensorFlowKit
 import CTensorFlow
 import Proto
 

@@ -23,23 +23,10 @@
 		CD6BBBEF20F2141B00DE8073 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6BBBEE20F2141B00DE8073 /* GraphViewModel.swift */; };
 		CDA6E22020F507D600F60152 /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA6E21F20F507D600F60152 /* GoogleReporter.swift */; };
 		CDA7CBCA20EFE6D90088FE94 /* graph.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDA7CBC920EFE6D90088FE94 /* graph.bundle */; };
-		CDA7CDA220EFEEAD0088FE94 /* TensorFlowKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CD9B20EFEEAC0088FE94 /* TensorFlowKit.framework */; };
-		CDA7CDA320EFEEAD0088FE94 /* Unarchiver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CD9C20EFEEAD0088FE94 /* Unarchiver.framework */; };
-		CDA7CDA420EFEEAD0088FE94 /* CAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CD9D20EFEEAD0088FE94 /* CAPI.framework */; };
-		CDA7CDA520EFEEAD0088FE94 /* MemoryLayoutKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CD9E20EFEEAD0088FE94 /* MemoryLayoutKit.framework */; };
-		CDA7CDA620EFEEAD0088FE94 /* MNISTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CD9F20EFEEAD0088FE94 /* MNISTKit.framework */; };
 		CDA7CDA720EFEEAD0088FE94 /* Proto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CDA020EFEEAD0088FE94 /* Proto.framework */; };
 		CDA7CDA820EFEEAD0088FE94 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CDA120EFEEAD0088FE94 /* SwiftProtobuf.framework */; };
-		CDA7CDA920EFEECA0088FE94 /* CAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CD9D20EFEEAD0088FE94 /* CAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CDA7CDAA20EFEECA0088FE94 /* MemoryLayoutKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CD9E20EFEEAD0088FE94 /* MemoryLayoutKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CDA7CDAB20EFEECA0088FE94 /* MNISTKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CD9F20EFEEAD0088FE94 /* MNISTKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDA7CDAC20EFEECA0088FE94 /* Proto.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CDA020EFEEAD0088FE94 /* Proto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDA7CDAD20EFEECA0088FE94 /* SwiftProtobuf.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CDA120EFEEAD0088FE94 /* SwiftProtobuf.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CDA7CDAE20EFEECA0088FE94 /* TensorFlowKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CD9B20EFEEAC0088FE94 /* TensorFlowKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CDA7CDAF20EFEECA0088FE94 /* Unarchiver.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CD9C20EFEEAD0088FE94 /* Unarchiver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CDA7CDB920EFEF850088FE94 /* CTensorFlow.h in Headers */ = {isa = PBXBuildFile; fileRef = CDA7CDB720EFEF850088FE94 /* CTensorFlow.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CDA7CDBC20EFEF850088FE94 /* CTensorFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CDB520EFEF850088FE94 /* CTensorFlow.framework */; };
-		CDA7CDBD20EFEF850088FE94 /* CTensorFlow.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CDA7CDB520EFEF850088FE94 /* CTensorFlow.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDAB847A20E6302700E334B5 /* swift-source_Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = CDAB847920E6302700E334B5 /* swift-source_Icon.icns */; };
 		CDAB847D20E632C600E334B5 /* dSYM_Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = CDAB847B20E632C600E334B5 /* dSYM_Icon.icns */; };
 		CDAB847E20E632C600E334B5 /* processorusagepoint.icns in Resources */ = {isa = PBXBuildFile; fileRef = CDAB847C20E632C600E334B5 /* processorusagepoint.icns */; };
@@ -66,20 +53,12 @@
 		CDB339C4211AE39900D41B36 /* BreakpointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339BA211AE39900D41B36 /* BreakpointViewController.swift */; };
 		CDB339C7211AEB4E00D41B36 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339C6211AEB4E00D41B36 /* TabButton.swift */; };
 		CDB339C9211B3FE100D41B36 /* GraphExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339C8211B3FE100D41B36 /* GraphExecutor.swift */; };
+		CDD602D4212B1892000F6020 /* FileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD602D2212B1892000F6020 /* FileWriter.swift */; };
+		CDD602D5212B1892000F6020 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD602D3212B1892000F6020 /* Record.swift */; };
 		CDDFA64B20E2357900945622 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDDFA64920E2357900945622 /* Main.storyboard */; };
 		CDDFA66C20E2499700945622 /* monaco.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDDFA66B20E2499600945622 /* monaco.bundle */; };
 		CDF42DC520E13B9600EC87B5 /* FIDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF42DC420E13B9600EC87B5 /* FIDocumentController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		CDA7CDBA20EFEF850088FE94 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CD07564E20D8F52900B643C3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CDA7CDB420EFEF850088FE94;
-			remoteInfo = CTensorFlow;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		CD11D75F20EA994F0024D493 /* Copy Frameworks */ = {
@@ -88,14 +67,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CDA7CDA920EFEECA0088FE94 /* CAPI.framework in Copy Frameworks */,
-				CDA7CDBD20EFEF850088FE94 /* CTensorFlow.framework in Copy Frameworks */,
-				CDA7CDAA20EFEECA0088FE94 /* MemoryLayoutKit.framework in Copy Frameworks */,
-				CDA7CDAB20EFEECA0088FE94 /* MNISTKit.framework in Copy Frameworks */,
 				CDA7CDAC20EFEECA0088FE94 /* Proto.framework in Copy Frameworks */,
 				CDA7CDAD20EFEECA0088FE94 /* SwiftProtobuf.framework in Copy Frameworks */,
-				CDA7CDAE20EFEECA0088FE94 /* TensorFlowKit.framework in Copy Frameworks */,
-				CDA7CDAF20EFEECA0088FE94 /* Unarchiver.framework in Copy Frameworks */,
 				CD11D76020EA99570024D493 /* LLDB.framework in Copy Frameworks */,
 				CD11D76120EA99570024D493 /* LLDBKit.framework in Copy Frameworks */,
 			);
@@ -122,16 +95,8 @@
 		CD6BBBEE20F2141B00DE8073 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		CDA6E21F20F507D600F60152 /* GoogleReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleReporter.swift; sourceTree = "<group>"; };
 		CDA7CBC920EFE6D90088FE94 /* graph.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = graph.bundle; sourceTree = "<group>"; };
-		CDA7CD9B20EFEEAC0088FE94 /* TensorFlowKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TensorFlowKit.framework; sourceTree = "<group>"; };
-		CDA7CD9C20EFEEAD0088FE94 /* Unarchiver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Unarchiver.framework; sourceTree = "<group>"; };
-		CDA7CD9D20EFEEAD0088FE94 /* CAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CAPI.framework; sourceTree = "<group>"; };
-		CDA7CD9E20EFEEAD0088FE94 /* MemoryLayoutKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MemoryLayoutKit.framework; sourceTree = "<group>"; };
-		CDA7CD9F20EFEEAD0088FE94 /* MNISTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MNISTKit.framework; sourceTree = "<group>"; };
 		CDA7CDA020EFEEAD0088FE94 /* Proto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Proto.framework; sourceTree = "<group>"; };
 		CDA7CDA120EFEEAD0088FE94 /* SwiftProtobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftProtobuf.framework; sourceTree = "<group>"; };
-		CDA7CDB520EFEF850088FE94 /* CTensorFlow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CTensorFlow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDA7CDB720EFEF850088FE94 /* CTensorFlow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTensorFlow.h; sourceTree = "<group>"; };
-		CDA7CDB820EFEF850088FE94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDAB847920E6302700E334B5 /* swift-source_Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "swift-source_Icon.icns"; sourceTree = "<group>"; };
 		CDAB847B20E632C600E334B5 /* dSYM_Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = dSYM_Icon.icns; sourceTree = "<group>"; };
 		CDAB847C20E632C600E334B5 /* processorusagepoint.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = processorusagepoint.icns; sourceTree = "<group>"; };
@@ -158,6 +123,8 @@
 		CDB339BA211AE39900D41B36 /* BreakpointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakpointViewController.swift; sourceTree = "<group>"; };
 		CDB339C6211AEB4E00D41B36 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
 		CDB339C8211B3FE100D41B36 /* GraphExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphExecutor.swift; sourceTree = "<group>"; };
+		CDD602D2212B1892000F6020 /* FileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriter.swift; sourceTree = "<group>"; };
+		CDD602D3212B1892000F6020 /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		CDDFA64A20E2357900945622 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDDFA66B20E2499600945622 /* monaco.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = monaco.bundle; sourceTree = "<group>"; };
 		CDF42DC420E13B9600EC87B5 /* FIDocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIDocumentController.swift; sourceTree = "<group>"; };
@@ -169,22 +136,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD11D75D20EA99450024D493 /* LLDB.framework in Frameworks */,
-				CDA7CDBC20EFEF850088FE94 /* CTensorFlow.framework in Frameworks */,
-				CDA7CDA220EFEEAD0088FE94 /* TensorFlowKit.framework in Frameworks */,
-				CDA7CDA620EFEEAD0088FE94 /* MNISTKit.framework in Frameworks */,
-				CDA7CDA520EFEEAD0088FE94 /* MemoryLayoutKit.framework in Frameworks */,
 				CDA7CDA820EFEEAD0088FE94 /* SwiftProtobuf.framework in Frameworks */,
-				CDA7CDA420EFEEAD0088FE94 /* CAPI.framework in Frameworks */,
 				CD11D75E20EA99450024D493 /* LLDBKit.framework in Frameworks */,
-				CDA7CDA320EFEEAD0088FE94 /* Unarchiver.framework in Frameworks */,
 				CDA7CDA720EFEEAD0088FE94 /* Proto.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CDA7CDB120EFEF850088FE94 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				CD07565820D8F52900B643C3 /* Flow Inspector */,
-				CDA7CDB620EFEF850088FE94 /* CTensorFlow */,
 				CD07565720D8F52900B643C3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -204,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				CD07565620D8F52900B643C3 /* Flow Inspector.app */,
-				CDA7CDB520EFEF850088FE94 /* CTensorFlow.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,13 +177,8 @@
 		CD11D75A20EA99450024D493 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CDA7CD9D20EFEEAD0088FE94 /* CAPI.framework */,
-				CDA7CD9E20EFEEAD0088FE94 /* MemoryLayoutKit.framework */,
-				CDA7CD9F20EFEEAD0088FE94 /* MNISTKit.framework */,
 				CDA7CDA020EFEEAD0088FE94 /* Proto.framework */,
 				CDA7CDA120EFEEAD0088FE94 /* SwiftProtobuf.framework */,
-				CDA7CD9B20EFEEAC0088FE94 /* TensorFlowKit.framework */,
-				CDA7CD9C20EFEEAD0088FE94 /* Unarchiver.framework */,
 				CD11D75B20EA99450024D493 /* LLDB.framework */,
 				CD11D75C20EA99450024D493 /* LLDBKit.framework */,
 			);
@@ -266,6 +213,7 @@
 		CD28E49220E11DB300C28897 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CDD602D1212B1873000F6020 /* TensorFlowKit */,
 				CD28E49320E11DB300C28897 /* AppDelegate.swift */,
 				CD28E49F20E1249200C28897 /* SourceTreeController.swift */,
 				CD11D76220EA99F20024D493 /* Processor.swift */,
@@ -307,15 +255,6 @@
 				CD6BBBEE20F2141B00DE8073 /* GraphViewModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		CDA7CDB620EFEF850088FE94 /* CTensorFlow */ = {
-			isa = PBXGroup;
-			children = (
-				CDA7CDB720EFEF850088FE94 /* CTensorFlow.h */,
-				CDA7CDB820EFEF850088FE94 /* Info.plist */,
-			);
-			path = CTensorFlow;
 			sourceTree = "<group>";
 		};
 		CDB33981211AE38800D41B36 /* Preferences */ = {
@@ -389,18 +328,16 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-/* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		CDA7CDB220EFEF850088FE94 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CDA7CDB920EFEF850088FE94 /* CTensorFlow.h in Headers */,
+		CDD602D1212B1873000F6020 /* TensorFlowKit */ = {
+			isa = PBXGroup;
+			children = (
+				CDD602D2212B1892000F6020 /* FileWriter.swift */,
+				CDD602D3212B1892000F6020 /* Record.swift */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			path = TensorFlowKit;
+			sourceTree = "<group>";
 		};
-/* End PBXHeadersBuildPhase section */
+/* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
 		CD07565520D8F52900B643C3 /* Flow Inspector */ = {
@@ -415,30 +352,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				CDA7CDBB20EFEF850088FE94 /* PBXTargetDependency */,
 			);
 			name = "Flow Inspector";
 			productName = "Flow Inspector";
 			productReference = CD07565620D8F52900B643C3 /* Flow Inspector.app */;
 			productType = "com.apple.product-type.application";
-		};
-		CDA7CDB420EFEF850088FE94 /* CTensorFlow */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CDA7CDBE20EFEF850088FE94 /* Build configuration list for PBXNativeTarget "CTensorFlow" */;
-			buildPhases = (
-				CDA7CDB020EFEF850088FE94 /* Sources */,
-				CDA7CDB120EFEF850088FE94 /* Frameworks */,
-				CDA7CDB220EFEF850088FE94 /* Headers */,
-				CDA7CDB320EFEF850088FE94 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CTensorFlow;
-			productName = CTensorFlow;
-			productReference = CDA7CDB520EFEF850088FE94 /* CTensorFlow.framework */;
-			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -459,9 +377,6 @@
 							};
 						};
 					};
-					CDA7CDB420EFEF850088FE94 = {
-						CreatedOnToolsVersion = 9.4.1;
-					};
 				};
 			};
 			buildConfigurationList = CD07565120D8F52900B643C3 /* Build configuration list for PBXProject "Flow Inspector" */;
@@ -478,7 +393,6 @@
 			projectRoot = "";
 			targets = (
 				CD07565520D8F52900B643C3 /* Flow Inspector */,
-				CDA7CDB420EFEF850088FE94 /* CTensorFlow */,
 			);
 		};
 /* End PBXProject section */
@@ -509,13 +423,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CDA7CDB320EFEF850088FE94 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -523,7 +430,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDD602D4212B1892000F6020 /* FileWriter.swift in Sources */,
 				CDB339BB211AE39900D41B36 /* TensorInfoViewController.swift in Sources */,
+				CDD602D5212B1892000F6020 /* Record.swift in Sources */,
 				CDB339C1211AE39900D41B36 /* InfoAreaViewController.swift in Sources */,
 				CDA6E22020F507D600F60152 /* GoogleReporter.swift in Sources */,
 				CD11D76320EA99F20024D493 /* Processor.swift in Sources */,
@@ -549,22 +458,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CDA7CDB020EFEF850088FE94 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CDA7CDBB20EFEF850088FE94 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CDA7CDB420EFEF850088FE94 /* CTensorFlow */;
-			targetProxy = CDA7CDBA20EFEF850088FE94 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CDDFA64920E2357900945622 /* Main.storyboard */ = {
@@ -741,64 +635,6 @@
 			};
 			name = Release;
 		};
-		CDA7CDBF20EFEF850088FE94 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = YN4TK7JQSA;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = CTensorFlow/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.octadero.CTensorFlow;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		CDA7CDC020EFEF850088FE94 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = YN4TK7JQSA;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = CTensorFlow/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.octadero.CTensorFlow;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -816,15 +652,6 @@
 			buildConfigurations = (
 				CD07566920D8F52B00B643C3 /* Debug */,
 				CD07566A20D8F52B00B643C3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CDA7CDBE20EFEF850088FE94 /* Build configuration list for PBXNativeTarget "CTensorFlow" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CDA7CDBF20EFEF850088FE94 /* Debug */,
-				CDA7CDC020EFEF850088FE94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
