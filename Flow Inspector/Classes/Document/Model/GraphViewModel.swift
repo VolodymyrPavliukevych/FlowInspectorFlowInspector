@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CTensorFlow
 import Proto
 
 struct EdgeValueViewModel: Encodable {

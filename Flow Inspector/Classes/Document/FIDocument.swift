@@ -76,12 +76,19 @@ struct GraphModel {
         case function
         case main
     }
-    var graphData: Data
     var graphDef: Tensorflow_GraphDef
     var kind: Kind
     var viewModel: GraphViewModel
     var entryFunctionBaseName: String? = nil
-    var tensorArgument: [Tensorflow_TensorProto]
+    var tensorArgument: [Tensorflow_TensorProto]? = nil
+    
+    init(graphDef: Tensorflow_GraphDef, kind: Kind, entryFunctionBaseName: String? = nil, tensorArgument: [Tensorflow_TensorProto]? = nil) {
+        self.graphDef = graphDef
+        self.kind = kind
+        self.entryFunctionBaseName = entryFunctionBaseName
+        self.tensorArgument = tensorArgument
+        self.viewModel = GraphViewModel(from: graphDef)
+    }
 }
 
 struct FIDocumentModel { /*SWIFT_TENSORFLOW_ENABLE_DEBUG_LOGGING=true,*/
@@ -271,8 +278,8 @@ extension FIDocument: ProjectWindowControllerOutput {
         let finishCallback = {
             DispatchQueue.main.async {
                 self.projectWindowControllerInput?.progressIndicator(startAnimation: false)
-                if let data = self.model.mainGraph?.graphData {
-                    self.projectWindowControllerInput?.progressText("Finished. Graph \(data.count) bytes.")
+                if let graphDef = self.model.mainGraph?.graphDef {
+                    self.projectWindowControllerInput?.progressText("Finished. Graph with \(graphDef.node.count) nodes found.")
                 } else {
                     self.projectWindowControllerInput?.progressText("Finished. Graph not found.")
                 }
@@ -310,8 +317,8 @@ extension FIDocument: ProjectWindowControllerOutput {
         let finishCallback = {
             DispatchQueue.main.async {
                 self.projectWindowControllerInput?.progressIndicator(startAnimation: false)
-                if let data = self.model.functionGraph?.graphData {
-                    self.projectWindowControllerInput?.progressText("Finished. Graph \(data.count) bytes.")
+                if let graphDef = self.model.functionGraph?.graphDef {
+                    self.projectWindowControllerInput?.progressText("Finished. Graph with \(graphDef.node.count) nodes found.")
                 } else {
                     self.projectWindowControllerInput?.progressText("Finished. Graph not found.")
                 }
