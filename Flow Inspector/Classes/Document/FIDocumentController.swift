@@ -9,14 +9,4 @@
 import Foundation
 import Cocoa
 
-class FIDocumentController: NSDocumentController {
-    func menuWillOpen(_ menu: NSMenu){
-        print("")
-    }
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//    }
-    
-    
-    
-}
+class FIDocumentController: NSDocumentController { }

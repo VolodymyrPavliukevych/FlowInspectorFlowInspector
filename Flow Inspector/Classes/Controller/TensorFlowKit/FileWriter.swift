@@ -37,7 +37,7 @@ public class FileWriter {
     
     /// Constructor, should receive url path to storage folder
     /// Also you can set some identifier for your file.
-    public init(folder url: URL, identifier : String? = "", graph: Tensorflow_TensorProto? = nil) throws {
+    public init(folder url: URL, identifier : String? = "", graph: Tensorflow_GraphDef? = nil) throws {
         try prepareFile(folder: url, identifier: identifier)
         if let graph = graph {
             try add(graph: graph)
@@ -114,7 +114,7 @@ public class FileWriter {
     }
     
     /// Add Graph to events list to store it on file system
-    internal func add(graph: Tensorflow_TensorProto) throws {
+    internal func add(graph: Tensorflow_GraphDef) throws {
         var eventRecord = EventRecord(defaultKind: .value)
         eventRecord.event.summary = Tensorflow_Summary()
         eventRecord.event.graphDef = try graph.serializedData()

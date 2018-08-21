@@ -16,7 +16,6 @@
 		CD11D76320EA99F20024D493 /* Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD11D76220EA99F20024D493 /* Processor.swift */; };
 		CD28E49120E11BC100C28897 /* flow.icns in Resources */ = {isa = PBXBuildFile; fileRef = CD28E49020E11BC100C28897 /* flow.icns */; };
 		CD28E49820E11DB300C28897 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28E49320E11DB300C28897 /* AppDelegate.swift */; };
-		CD28E49920E11DB300C28897 /* FIDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28E49520E11DB300C28897 /* FIDocument.swift */; };
 		CD28E4A020E1249200C28897 /* SourceTreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28E49F20E1249200C28897 /* SourceTreeController.swift */; };
 		CD34ABDB21218C150012E502 /* profiler.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD34ABDA21218C150012E502 /* profiler.bundle */; };
 		CD3C459520FCC63C0001119C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3C459420FCC63C0001119C /* Result.swift */; };
@@ -53,11 +52,20 @@
 		CDB339C4211AE39900D41B36 /* BreakpointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339BA211AE39900D41B36 /* BreakpointViewController.swift */; };
 		CDB339C7211AEB4E00D41B36 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339C6211AEB4E00D41B36 /* TabButton.swift */; };
 		CDB339C9211B3FE100D41B36 /* GraphExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB339C8211B3FE100D41B36 /* GraphExecutor.swift */; };
+		CDD26CFB212C0DF800D6AF2C /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD26CFA212C0DF800D6AF2C /* GraphModel.swift */; };
+		CDD26CFD212C0E0600D6AF2C /* GraphMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD26CFC212C0E0600D6AF2C /* GraphMarker.swift */; };
+		CDD26D12212C128E00D6AF2C /* FIDocumentProjectWindowControllerOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD26D0A212C128E00D6AF2C /* FIDocumentProjectWindowControllerOutput.swift */; };
+		CDD26D13212C128E00D6AF2C /* FIDocumentGraphViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD26D0B212C128E00D6AF2C /* FIDocumentGraphViewOutput.swift */; };
+		CDD26D14212C128E00D6AF2C /* FIDocumentPreferencesOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD26D0C212C128E00D6AF2C /* FIDocumentPreferencesOutput.swift */; };
+		CDD26D15212C128E00D6AF2C /* FIDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD26D0D212C128E00D6AF2C /* FIDocument.swift */; };
+		CDD26D16212C128E00D6AF2C /* FIDocumentGraphExecutorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD26D0E212C128E00D6AF2C /* FIDocumentGraphExecutorOutput.swift */; };
+		CDD26D17212C128E00D6AF2C /* FIDocumentCodeViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD26D0F212C128E00D6AF2C /* FIDocumentCodeViewOutput.swift */; };
+		CDD26D18212C128E00D6AF2C /* FIDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD26D10212C128E00D6AF2C /* FIDocumentController.swift */; };
+		CDD26D19212C128E00D6AF2C /* FIDocumentProcessorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD26D11212C128E00D6AF2C /* FIDocumentProcessorOutput.swift */; };
 		CDD602D4212B1892000F6020 /* FileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD602D2212B1892000F6020 /* FileWriter.swift */; };
 		CDD602D5212B1892000F6020 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD602D3212B1892000F6020 /* Record.swift */; };
 		CDDFA64B20E2357900945622 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDDFA64920E2357900945622 /* Main.storyboard */; };
 		CDDFA66C20E2499700945622 /* monaco.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDDFA66B20E2499600945622 /* monaco.bundle */; };
-		CDF42DC520E13B9600EC87B5 /* FIDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF42DC420E13B9600EC87B5 /* FIDocumentController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -88,7 +96,6 @@
 		CD11D76220EA99F20024D493 /* Processor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Processor.swift; sourceTree = "<group>"; };
 		CD28E49020E11BC100C28897 /* flow.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = flow.icns; sourceTree = "<group>"; };
 		CD28E49320E11DB300C28897 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CD28E49520E11DB300C28897 /* FIDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIDocument.swift; sourceTree = "<group>"; };
 		CD28E49F20E1249200C28897 /* SourceTreeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTreeController.swift; sourceTree = "<group>"; };
 		CD34ABDA21218C150012E502 /* profiler.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = profiler.bundle; sourceTree = "<group>"; };
 		CD3C459420FCC63C0001119C /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -123,11 +130,20 @@
 		CDB339BA211AE39900D41B36 /* BreakpointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakpointViewController.swift; sourceTree = "<group>"; };
 		CDB339C6211AEB4E00D41B36 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
 		CDB339C8211B3FE100D41B36 /* GraphExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphExecutor.swift; sourceTree = "<group>"; };
+		CDD26CFA212C0DF800D6AF2C /* GraphModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphModel.swift; sourceTree = "<group>"; };
+		CDD26CFC212C0E0600D6AF2C /* GraphMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphMarker.swift; sourceTree = "<group>"; };
+		CDD26D0A212C128E00D6AF2C /* FIDocumentProjectWindowControllerOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIDocumentProjectWindowControllerOutput.swift; sourceTree = "<group>"; };
+		CDD26D0B212C128E00D6AF2C /* FIDocumentGraphViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIDocumentGraphViewOutput.swift; sourceTree = "<group>"; };
+		CDD26D0C212C128E00D6AF2C /* FIDocumentPreferencesOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIDocumentPreferencesOutput.swift; sourceTree = "<group>"; };
+		CDD26D0D212C128E00D6AF2C /* FIDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIDocument.swift; sourceTree = "<group>"; };
+		CDD26D0E212C128E00D6AF2C /* FIDocumentGraphExecutorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIDocumentGraphExecutorOutput.swift; sourceTree = "<group>"; };
+		CDD26D0F212C128E00D6AF2C /* FIDocumentCodeViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIDocumentCodeViewOutput.swift; sourceTree = "<group>"; };
+		CDD26D10212C128E00D6AF2C /* FIDocumentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIDocumentController.swift; sourceTree = "<group>"; };
+		CDD26D11212C128E00D6AF2C /* FIDocumentProcessorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIDocumentProcessorOutput.swift; sourceTree = "<group>"; };
 		CDD602D2212B1892000F6020 /* FileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriter.swift; sourceTree = "<group>"; };
 		CDD602D3212B1892000F6020 /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		CDDFA64A20E2357900945622 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDDFA66B20E2499600945622 /* monaco.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = monaco.bundle; sourceTree = "<group>"; };
-		CDF42DC420E13B9600EC87B5 /* FIDocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIDocumentController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,9 +244,15 @@
 		CD28E49420E11DB300C28897 /* Document */ = {
 			isa = PBXGroup;
 			children = (
+				CDD26D0D212C128E00D6AF2C /* FIDocument.swift */,
+				CDD26D0F212C128E00D6AF2C /* FIDocumentCodeViewOutput.swift */,
+				CDD26D10212C128E00D6AF2C /* FIDocumentController.swift */,
+				CDD26D0E212C128E00D6AF2C /* FIDocumentGraphExecutorOutput.swift */,
+				CDD26D0B212C128E00D6AF2C /* FIDocumentGraphViewOutput.swift */,
+				CDD26D0C212C128E00D6AF2C /* FIDocumentPreferencesOutput.swift */,
+				CDD26D11212C128E00D6AF2C /* FIDocumentProcessorOutput.swift */,
+				CDD26D0A212C128E00D6AF2C /* FIDocumentProjectWindowControllerOutput.swift */,
 				CD6BBBED20F2141000DE8073 /* Model */,
-				CD28E49520E11DB300C28897 /* FIDocument.swift */,
-				CDF42DC420E13B9600EC87B5 /* FIDocumentController.swift */,
 			);
 			path = Document;
 			sourceTree = "<group>";
@@ -253,6 +275,8 @@
 			isa = PBXGroup;
 			children = (
 				CD6BBBEE20F2141B00DE8073 /* GraphViewModel.swift */,
+				CDD26CFA212C0DF800D6AF2C /* GraphModel.swift */,
+				CDD26CFC212C0E0600D6AF2C /* GraphMarker.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -432,28 +456,36 @@
 			files = (
 				CDD602D4212B1892000F6020 /* FileWriter.swift in Sources */,
 				CDB339BB211AE39900D41B36 /* TensorInfoViewController.swift in Sources */,
+				CDD26D12212C128E00D6AF2C /* FIDocumentProjectWindowControllerOutput.swift in Sources */,
+				CDD26D14212C128E00D6AF2C /* FIDocumentPreferencesOutput.swift in Sources */,
 				CDD602D5212B1892000F6020 /* Record.swift in Sources */,
+				CDD26D15212C128E00D6AF2C /* FIDocument.swift in Sources */,
 				CDB339C1211AE39900D41B36 /* InfoAreaViewController.swift in Sources */,
+				CDD26D18212C128E00D6AF2C /* FIDocumentController.swift in Sources */,
 				CDA6E22020F507D600F60152 /* GoogleReporter.swift in Sources */,
+				CDD26D16212C128E00D6AF2C /* FIDocumentGraphExecutorOutput.swift in Sources */,
 				CD11D76320EA99F20024D493 /* Processor.swift in Sources */,
+				CDD26D19212C128E00D6AF2C /* FIDocumentProcessorOutput.swift in Sources */,
 				CDB339C9211B3FE100D41B36 /* GraphExecutor.swift in Sources */,
 				CDB3399C211AE38800D41B36 /* PreferencesWindowController.swift in Sources */,
 				CD28E4A020E1249200C28897 /* SourceTreeController.swift in Sources */,
 				CD3C459520FCC63C0001119C /* Result.swift in Sources */,
-				CD28E49920E11DB300C28897 /* FIDocument.swift in Sources */,
 				CDB339C0211AE39900D41B36 /* NavigatorAreaViewController.swift in Sources */,
+				CDD26D17212C128E00D6AF2C /* FIDocumentCodeViewOutput.swift in Sources */,
 				CD0253022118660300DA63E3 /* Extension.swift in Sources */,
 				CD28E49820E11DB300C28897 /* AppDelegate.swift in Sources */,
 				CDB339AD211AE38800D41B36 /* ProjectViewController.swift in Sources */,
 				CDB339A9211AE38800D41B36 /* CodeViewController.swift in Sources */,
 				CDB339B0211AE38800D41B36 /* DebugViewController.swift in Sources */,
 				CDB339AE211AE38800D41B36 /* ProjectWindowController.swift in Sources */,
+				CDD26CFD212C0E0600D6AF2C /* GraphMarker.swift in Sources */,
+				CDD26D13212C128E00D6AF2C /* FIDocumentGraphViewOutput.swift in Sources */,
 				CDB339AA211AE38800D41B36 /* GraphViewController.swift in Sources */,
 				CDB339C4211AE39900D41B36 /* BreakpointViewController.swift in Sources */,
-				CDF42DC520E13B9600EC87B5 /* FIDocumentController.swift in Sources */,
 				CDB339C3211AE39900D41B36 /* SourceTreeViewController.swift in Sources */,
 				CDB339C7211AEB4E00D41B36 /* TabButton.swift in Sources */,
 				CD6BBBEF20F2141B00DE8073 /* GraphViewModel.swift in Sources */,
+				CDD26CFB212C0DF800D6AF2C /* GraphModel.swift in Sources */,
 				CDB339AC211AE38800D41B36 /* ProjectWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
