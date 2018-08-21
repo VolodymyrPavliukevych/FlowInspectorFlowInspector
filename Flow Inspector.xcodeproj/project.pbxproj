@@ -19,6 +19,8 @@
 		CD28E4A020E1249200C28897 /* SourceTreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28E49F20E1249200C28897 /* SourceTreeController.swift */; };
 		CD34ABDB21218C150012E502 /* profiler.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD34ABDA21218C150012E502 /* profiler.bundle */; };
 		CD3C459520FCC63C0001119C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3C459420FCC63C0001119C /* Result.swift */; };
+		CD537D80212C4B26009CCC3F /* LaunchSettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD537D7E212C4B26009CCC3F /* LaunchSettingsWindowController.swift */; };
+		CD537D81212C4B26009CCC3F /* LaunchSettingsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD537D7F212C4B26009CCC3F /* LaunchSettingsWindowController.xib */; };
 		CD6BBBEF20F2141B00DE8073 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6BBBEE20F2141B00DE8073 /* GraphViewModel.swift */; };
 		CDA6E22020F507D600F60152 /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA6E21F20F507D600F60152 /* GoogleReporter.swift */; };
 		CDA7CBCA20EFE6D90088FE94 /* graph.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDA7CBC920EFE6D90088FE94 /* graph.bundle */; };
@@ -99,6 +101,8 @@
 		CD28E49F20E1249200C28897 /* SourceTreeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTreeController.swift; sourceTree = "<group>"; };
 		CD34ABDA21218C150012E502 /* profiler.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = profiler.bundle; sourceTree = "<group>"; };
 		CD3C459420FCC63C0001119C /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		CD537D7E212C4B26009CCC3F /* LaunchSettingsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSettingsWindowController.swift; sourceTree = "<group>"; };
+		CD537D7F212C4B26009CCC3F /* LaunchSettingsWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchSettingsWindowController.xib; sourceTree = "<group>"; };
 		CD6BBBEE20F2141B00DE8073 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		CDA6E21F20F507D600F60152 /* GoogleReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleReporter.swift; sourceTree = "<group>"; };
 		CDA7CBC920EFE6D90088FE94 /* graph.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = graph.bundle; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 		CD28E49620E11DB300C28897 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CD537D7D212C4B01009CCC3F /* LaunchSettings */,
 				CDB339C5211AEB3E00D41B36 /* UIKit */,
 				CDB3398F211AE38800D41B36 /* CodeArea */,
 				CDB33999211AE38800D41B36 /* DebugArea */,
@@ -269,6 +274,15 @@
 				CDB33995211AE38800D41B36 /* Project */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		CD537D7D212C4B01009CCC3F /* LaunchSettings */ = {
+			isa = PBXGroup;
+			children = (
+				CD537D7E212C4B26009CCC3F /* LaunchSettingsWindowController.swift */,
+				CD537D7F212C4B26009CCC3F /* LaunchSettingsWindowController.xib */,
+			);
+			path = LaunchSettings;
 			sourceTree = "<group>";
 		};
 		CD6BBBED20F2141000DE8073 /* Model */ = {
@@ -435,6 +449,7 @@
 				CDAB847E20E632C600E334B5 /* processorusagepoint.icns in Resources */,
 				CD28E49120E11BC100C28897 /* flow.icns in Resources */,
 				CD34ABDB21218C150012E502 /* profiler.bundle in Resources */,
+				CD537D81212C4B26009CCC3F /* LaunchSettingsWindowController.xib in Resources */,
 				CDB339A8211AE38800D41B36 /* CodeViewController.xib in Resources */,
 				CDB339AB211AE38800D41B36 /* GraphViewController.xib in Resources */,
 				CDB339BC211AE39900D41B36 /* NavigatorAreaViewController.xib in Resources */,
@@ -457,6 +472,7 @@
 				CDD602D4212B1892000F6020 /* FileWriter.swift in Sources */,
 				CDB339BB211AE39900D41B36 /* TensorInfoViewController.swift in Sources */,
 				CDD26D12212C128E00D6AF2C /* FIDocumentProjectWindowControllerOutput.swift in Sources */,
+				CD537D80212C4B26009CCC3F /* LaunchSettingsWindowController.swift in Sources */,
 				CDD26D14212C128E00D6AF2C /* FIDocumentPreferencesOutput.swift in Sources */,
 				CDD602D5212B1892000F6020 /* Record.swift in Sources */,
 				CDD26D15212C128E00D6AF2C /* FIDocument.swift in Sources */,

@@ -44,7 +44,7 @@ class PreferencesWindowController: NSWindowController {
     
     var preferences: Preferences?
     var output: PreferencesOutput?
-    var windowInteraction: ProjectWindowControllerInteraction?
+    var windowInteraction: WindowControllerInteraction?
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -54,7 +54,7 @@ class PreferencesWindowController: NSWindowController {
         }
     }
 
-    init(_ preferences: Preferences, output: PreferencesOutput, windowInteraction: ProjectWindowControllerInteraction) {
+    init(_ preferences: Preferences, output: PreferencesOutput, windowInteraction: WindowControllerInteraction) {
         super.init(window: nil)
         let nibName = NSNib.Name("PreferencesWindowController")
         Bundle.main.loadNibNamed(nibName, owner: self, topLevelObjects: nil)

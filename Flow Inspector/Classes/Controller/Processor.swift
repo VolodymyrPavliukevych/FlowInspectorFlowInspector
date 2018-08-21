@@ -30,7 +30,7 @@ enum ProcessorError: Error {
     
 }
 protocol ProcessorInput {
-    func extractGraph(at functionName: String, preferences: Preferences, callback: @escaping ResultCompletion<Data>)
+    func extractGraph(at functionName: String, preferences: Preferences, callback: @escaping ResultCompletion<MetaGraph>)
     func extractMainGraph(preferences: Preferences, callback: @escaping ResultCompletion<MetaGraph>)
 }
 
@@ -42,14 +42,41 @@ protocol ProcessorOutput {
     func errorStreamReceived(_ string: String)
 }
 
-struct MetaGraph {
+class MetaGraph {
+    
+    enum MetaGraphError: Error {
+        case notReady
+    }
+    
     static let numberKey = "%number%"
     static let outputKey = "tfc_output_\(numberKey)_main.tf"
     static let inputKey = "tfc_input_\(numberKey)_main.tf"
     
-    let program: Data
-    let entryFunctionBaseName: String
-    let tensorArgument: [Tensorflow_TensorProto]
+    var program: Data?
+    var entryFunctionBaseName: String?
+    var tensorArgument: [Tensorflow_TensorProto]?
+    var runMetadataPath: String?
+    
+    var isReady: Bool {
+        guard program != nil && entryFunctionBaseName != nil else {
+            return false
+        }
+        return true
+    }
+    
+    init() {}
+    
+    func value() throws -> (program: Data, entryFunctionBaseName: String) {
+        guard isReady else {
+            throw MetaGraphError.notReady
+        }
+        
+        if let program = program, let entryFunctionBaseName = entryFunctionBaseName {
+            return (program, entryFunctionBaseName)
+        } else {
+            throw MetaGraphError.notReady
+        }
+    }
 }
 
 enum Argument {
@@ -76,7 +103,6 @@ class Processor {
     static let mainFunctionName = "main"
     
     var output: ProcessorOutput
-    var graphProcessingCallback: ResultCompletion<Data>?
     var state = State.idle
     
     init(output: ProcessorOutput) {
@@ -206,8 +232,8 @@ extension Processor: ProcessorInput {
         let graphData = try process.readMemory(rdiPointerValue..<rdiPointerValue + rsiPointerValue)
         
         let entryFunctionBaseName: String = try process.readString(rdxPointerValue)
-        
-        return MetaGraph(program: graphData, entryFunctionBaseName: entryFunctionBaseName, tensorArgument: input)
+//        MetaGraph(program: graphData, entryFunctionBaseName: entryFunctionBaseName, tensorArgument: input)
+        return MetaGraph()
     }
     
     func extractMainGraph(preferences: Preferences, callback: @escaping ResultCompletion<MetaGraph>) {
@@ -288,13 +314,12 @@ extension Processor: ProcessorInput {
         launchDebug(preferences: preferences, createBreakpoint: createBreakpoint, discoverCallback: discoverCallback, finish: finishCallback)
     }
     
-    func extractGraph(at functionName: String, preferences: Preferences, callback: @escaping ResultCompletion<Data>) {
+    func extractGraph(at functionName: String, preferences: Preferences, callback: @escaping ResultCompletion<MetaGraph>) {
         guard state == .idle else {
             callback(.negative(error: ProcessorError.isInProgress))
             return
         }
         state = .lookingForFunctionGraph(state: .looking)
-        graphProcessingCallback = callback
         guard let program = try? self.output.binFileURL().lastPathComponent else {
             callback(.negative(error: ProcessorError.canNotComputeProgramName))
             return
@@ -316,8 +341,9 @@ extension Processor: ProcessorInput {
             
             let localCallback = { (result: Result<Data>) in
                 result.onPositive {
-                    self.state = .lookingForFunctionGraph(state: .found)
-                    callback(.positive(value: $0))
+                    //self.state = .lookingForFunctionGraph(state: .found)
+                    //callback(.positive(value: $0))
+                    print($0.count)
                 }
                 result.onNegative {
                     callback(.negative(error: $0))

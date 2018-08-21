@@ -37,10 +37,7 @@ extension FIDocument: ProjectWindowControllerOutput {
                 }
                 
                 result.onPositive {
-                    self.graphDidFound($0.program,
-                                       kind: .main,
-                                       entryFunctionBaseName: $0.entryFunctionBaseName,
-                                       tensorArgument: $0.tensorArgument)
+                    self.graphDidFound(as: $0, for: .main)
                     finishCallback()
                 }
             })
@@ -76,7 +73,7 @@ extension FIDocument: ProjectWindowControllerOutput {
                 }
                 
                 result.onPositive {
-                    self.graphDidFound($0, kind: .function)
+                    self.graphDidFound(as: $0, for: .function)
                     finishCallback()
                 }
             })

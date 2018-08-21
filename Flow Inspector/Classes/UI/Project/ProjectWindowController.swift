@@ -8,7 +8,7 @@
 
 import Cocoa
 
-protocol ProjectWindowControllerInteraction {
+protocol WindowControllerInteraction {
     func endSheet(window: NSWindow)
 }
 
@@ -92,7 +92,6 @@ class ProjectWindowController: NSWindowController {
         self.output?.launchProfiller()
     }
 }
-
 
 extension ProjectWindowController: ProjectWindowControllerInput {
     func extractMainGraphAction(available: Bool) {
@@ -187,7 +186,7 @@ extension ProjectWindowController: NSWindowDelegate {
     }
 }
 
-extension ProjectWindowController: ProjectWindowControllerInteraction {
+extension ProjectWindowController: WindowControllerInteraction {
     func endSheet(window: NSWindow) {
         self.window?.endSheet(window)
     }

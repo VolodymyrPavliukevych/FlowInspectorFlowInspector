@@ -148,14 +148,25 @@ class FIDocument: NSDocument {
         projectWindowControllerInput?.progressText("Ready, now you can read graph.")
     }
     
-    func graphDidFound(_ data: Data, kind: GraphModel.Kind, entryFunctionBaseName: String? = nil, tensorArgument: [Tensorflow_TensorProto]? = nil) {
+    func graphDidFound(as metaGraph: MetaGraph, for kind: GraphModel.Kind) {
         
         do {
+            let data = try metaGraph.value().program
+            let entryFunctionBaseName = try metaGraph.value().entryFunctionBaseName
             let graphDef = try Tensorflow_GraphDef(serializedData: data)
+            
+            var runMetadata: Tensorflow_RunMetadata? = nil
+            if let runMetadataPath = metaGraph.runMetadataPath {
+                let url = URL(fileURLWithPath: runMetadataPath)
+                let runMetadataData = try Data(contentsOf: url)
+                runMetadata = try Tensorflow_RunMetadata(serializedData: runMetadataData)
+            }
+            
             let graphModel = GraphModel(graphDef: graphDef,
                                         kind: kind,
                                         entryFunctionBaseName: entryFunctionBaseName,
-                                        tensorArgument: tensorArgument)
+                                        tensorArgument: metaGraph.tensorArgument,
+                                        runMetadata: runMetadata)
             
             switch kind {
             case .function:

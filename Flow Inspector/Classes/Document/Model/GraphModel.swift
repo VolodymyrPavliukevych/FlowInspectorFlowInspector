@@ -19,12 +19,14 @@ struct GraphModel {
     var viewModel: GraphViewModel
     var entryFunctionBaseName: String? = nil
     var tensorArgument: [Tensorflow_TensorProto]? = nil
+    var runMetadata: Tensorflow_RunMetadata? = nil
     
-    init(graphDef: Tensorflow_GraphDef, kind: Kind, entryFunctionBaseName: String? = nil, tensorArgument: [Tensorflow_TensorProto]? = nil) {
+    init(graphDef: Tensorflow_GraphDef, kind: Kind, entryFunctionBaseName: String? = nil, tensorArgument: [Tensorflow_TensorProto]? = nil, runMetadata: Tensorflow_RunMetadata? = nil) {
         self.graphDef = graphDef
         self.kind = kind
         self.entryFunctionBaseName = entryFunctionBaseName
         self.tensorArgument = tensorArgument
         self.viewModel = GraphViewModel(from: graphDef)
+        self.runMetadata = runMetadata
     }
 }
